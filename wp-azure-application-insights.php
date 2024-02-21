@@ -2,12 +2,13 @@
 /*
 Plugin Name: Application Insights
 Description: Integrates a WordPress site with Microsoft Application Insights.
-Version: 2.3
-Author: ApplicationInsights
+Version: 2.3.1
+Author: Craig Wayne
 License:  MIT
  */
 
-require_once 'vendor/autoload.php';
+//require_once plugin_dir_path('vendor/autoload.php');
+require_once ABSPATH.'wp-content/plugins/wp-azure-application-insights/vendor/autoload.php';
 
 // Enables Admin configuration experience
 $mySettingsPage = new ApplicationInsights\WordPress\Settings();

@@ -21,6 +21,11 @@ class Server_Instrumentation
             $application_insights_options = get_option("applicationinsights_options");
         } 
         $this->_telemetryClient = new \ApplicationInsights\Telemetry_Client();
+
+		if(!$application_insights_options || !$application_insights_options["instrumentation_key"]){
+			return;
+		}
+
         $this->_telemetryClient->getContext()->setInstrumentationKey($application_insights_options["instrumentation_key"]);
         $sdkVer = $this->_telemetryClient->getContext()->getInternalContext()->getSdkVersion();
         $this->_telemetryClient->getContext()->getInternalContext()->setSdkVersion('wp_' . $sdkVer);

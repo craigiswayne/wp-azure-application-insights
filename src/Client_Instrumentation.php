@@ -32,7 +32,11 @@ class Client_Instrumentation
             $application_insights_options = get_site_option("applicationinsights_options");
         } else {
             $application_insights_options = get_option("applicationinsights_options");
-        } 
+        }
+
+		if(!$application_insights_options || !$application_insights_options['applicationinsights_options']){
+			return;
+		}
 
         $replacements[0] = $application_insights_options["instrumentation_key"];
 

@@ -3,7 +3,7 @@
 Plugin Name: Azure App Insights
 Description: Enable Azure Application Insights for your website
 Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
-Version: 3.2.4
+Version: 3.3.0
 Author: Craig Wayne
 Author URI: https://github.com/craigiswayne/
 Requires at least: 6.4.2

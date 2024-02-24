@@ -37,8 +37,8 @@ jobs:
       - name: Get Repository Description
         id: repo_description
         run: |
-          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
-          echo "repository_description=$OWNER_EMAIL" >> $GITHUB_OUTPUT
+          REPO_DESCRIPTION=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
+          echo "repository_description=$REPO_DESCRIPTION" >> $GITHUB_OUTPUT
 
       - name: Print API data
         run: |

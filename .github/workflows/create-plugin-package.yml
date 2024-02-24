@@ -28,21 +28,30 @@ jobs:
           echo "Git Config"
           git config -l
 
-      - name: Get Repository Info
+      - name: Get Repository Owner
         id: repo_info
         run: |
           OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
-          echo "owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
+          echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
 
-      - name: Print Owner's Email
+      - name: Get Repository Description
+        id: repo_info
         run: |
-          echo "Owner's Email: ${{ steps.repo_info.outputs.owner_email }}"
+          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
+          echo "repository_description=$OWNER_EMAIL" >> $GITHUB_OUTPUT
+
+      - name: Print API data
+        run: |
+          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
+          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
 #      - name: Archive only specific files
 #        uses: actions/upload-artifact@v4
 #        with:
 #          name: ${{ github.event.repository.name }}
 #          path: |
+#            !.git
 #            !.github
+#            !.gitignore
 #            !composer.json
 #            !README.md

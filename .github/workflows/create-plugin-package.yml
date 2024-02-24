@@ -23,7 +23,6 @@ jobs:
           echo "Repo Name: ${{ github.event.repository.name }}"
           echo "Composer Name: ${{ github.repository }}";
           echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "GIT AUTHOR EMAIL: ${{ GIT_AUTHOR_EMAIL}}
           echo "Files in directory:"
           ls -laGh
           echo "Git Config"

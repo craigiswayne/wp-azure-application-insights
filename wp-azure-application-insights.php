@@ -3,7 +3,7 @@
 Plugin Name: Azure App Insights
 Description: Enable Azure Application Insights for your website
 Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
-Version: 3.3.0
+Version: 3.3.1
 Author: Craig Wayne
 Author URI: https://github.com/craigiswayne/
 Requires at least: 6.4.2
@@ -22,7 +22,6 @@ class AzureApplicationInsightsClient {
 
     public static function init(): void {
         add_action( 'admin_menu', [ __CLASS__, 'create_menu_item' ] );
-        register_deactivation_hook( __FILE__, [ __CLASS__, 'delete_options' ] );
         add_action( 'admin_init', [ __CLASS__, 'admin_init' ] );
         add_action( 'wp_head', [ __CLASS__, 'add_js_snippet' ] );
     }
@@ -52,10 +51,6 @@ class AzureApplicationInsightsClient {
             </form>
         </div>
         <?php
-    }
-
-    public static function delete_options( $network_deactivating ): void {
-        delete_option( self::$option_name );
     }
 
     public static function admin_init(): void {

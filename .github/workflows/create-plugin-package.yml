@@ -14,19 +14,33 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: "Checkout repository"
         uses: actions/checkout@v4
 
       - name: "Echo Statements"
         run: |
+          which composer
           echo "Latest Tag: ${{github.ref_name}}"
           echo "Repo Name: ${{ github.event.repository.name }}"
           echo "Composer Name: ${{ github.repository }}";
           echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "Get Composer php value"
           echo "Files in directory:"
           ls -laGh
           echo "Git Config"
           git config -l
+
+      - name: "Cache Composer dependencies"
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: "Composer Setup"
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.2
+          args: "--optimize-autoloader --no-dev"
 
       - name: Get Repository Owner
         id: repo_owner
@@ -58,4 +72,6 @@ jobs:
 #            !composer.json
 #            !README.md
 
+# TODO: set plugin meta data version from git tag
+# TODO: set plugin meta data description from composer config (composer config description)
 # TODO: test that the uninstall.php file exists

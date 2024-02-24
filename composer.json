@@ -2,11 +2,23 @@
     "name": "craigiswayne/wp-azure-application-insights",
     "description": "Enables Azure Application Insights via WordPress Plugin",
     "type": "wordpress-plugin",
+    "config": {
+        "platform": {
+            "php": "8.2"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "authors": [
         {
             "name": "Craig Wayne",
             "email": "craigiswayne@gmail.com",
             "role": "Developer"
         }
-    ]
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.9",
+        "wp-coding-standards/wpcs": "^3.0"
+    }
 }

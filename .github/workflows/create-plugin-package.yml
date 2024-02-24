@@ -19,8 +19,6 @@ jobs:
 
       - name: "Echo Statements"
         run: |
-          which jq
-          which curl
           echo "Latest Tag: ${{github.ref_name}}"
           echo "Repo Name: ${{ github.event.repository.name }}"
           echo "Composer Name: ${{ github.repository }}";
@@ -34,13 +32,15 @@ jobs:
         id: repo_owner
         run: |
           OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
+          echo "OWNER_EMAIL: $OWNER_EMAIL";
           echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
 
       - name: Get Repository Description
         id: repo_description
         run: |
           REPO_DESCRIPTION=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
-          echo "repository_description=$REPO_DESCRIPTION" >> $GITHUB_OUTPUT
+          echo 'REPO_DESCRIPTION: "$REPO_DESCRIPTION"';
+          echo 'repository_description="$REPO_DESCRIPTION"' >> $GITHUB_OUTPUT
 
       - name: Print API data
         run: |

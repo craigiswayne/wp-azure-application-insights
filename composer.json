@@ -1,0 +1,12 @@
+{
+    "name": "craigiswayne/wp-azure-application-insights",
+    "description": "Enables Azure Application Insights via WordPress Plugin",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Craig Wayne",
+            "email": "craigiswayne@gmail.com",
+            "role": "Developer"
+        }
+    ]
+}

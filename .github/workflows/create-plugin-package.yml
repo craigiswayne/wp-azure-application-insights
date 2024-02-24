@@ -57,3 +57,5 @@ jobs:
 #            !.gitignore
 #            !composer.json
 #            !README.md
+
+# TODO: test that the uninstall.php file exists

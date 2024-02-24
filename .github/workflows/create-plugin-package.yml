@@ -19,6 +19,8 @@ jobs:
 
       - name: "Echo Statements"
         run: |
+          which jq
+          which curl
           echo "Latest Tag: ${{github.ref_name}}"
           echo "Repo Name: ${{ github.event.repository.name }}"
           echo "Composer Name: ${{ github.repository }}";

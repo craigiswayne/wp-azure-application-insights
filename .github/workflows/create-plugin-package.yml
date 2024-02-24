@@ -32,7 +32,7 @@ jobs:
         id: repo_info
         run: |
           OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
-          echo "::set-output name=owner_email::$OWNER_EMAIL"
+          echo "owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
 
       - name: Print Owner's Email
         run: |

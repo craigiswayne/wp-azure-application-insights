@@ -13,13 +13,12 @@ License:  MIT
 
 const WP_AZURE_APPLICATION_INSIGHTS_PREFIX = 'wp_azure_app_insights_';
 
-class AzureApplicationInsights {
+class AzureApplicationInsightsClient {
 	public static string $page_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
 	public static string $section_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'section';
 	public static string $option_group = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_group';
 	public static string $option_name = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_connection_string';
-	public static string $regex_connection_string = 'InstrumentationKey=[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12};IngestionEndpoint=https:\/\/.*;LiveEndpoint=https:\/\/';
-
+	public static string $regex_connection_string = '^InstrumentationKey=[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12};IngestionEndpoint=https:\/\/.*;LiveEndpoint=https:\/\/.*';
 
 	public static function init(): void {
 		add_action( 'admin_menu', [ __CLASS__, 'create_menu_item' ] );
@@ -43,7 +42,7 @@ class AzureApplicationInsights {
 		?>
         <div class="wrap">
             <h2><?= $plugin_data['Name']; ?></h2>
-            <form method="post" action="options.php">
+            <form method="post" action="<?= admin_url('options.php'); ?>">
 				<?php
 				settings_errors( self::$option_group );
 				settings_fields( self::$option_group );
@@ -72,13 +71,14 @@ class AzureApplicationInsights {
 	public static function sanitize_connection_string( $new_value ): string {
 
 		if ( preg_match( '/' . self::$regex_connection_string . '/', $new_value ) ) {
+            add_settings_error( self::$option_group, self::$option_name . '_regex_passed', __( 'Settings saved.' ), 'success' );
 			return sanitize_text_field( $new_value );
 		}
 
-		$original_value = get_option( self::$option_name );
-		add_settings_error( self::$option_group, self::$option_name . '_regex_failed', 'Connection string: Incorrect format... reverting to original value', 'error' );
+		$initial_value = get_option( self::$option_name );
+		add_settings_error( self::$option_group, self::$option_name . '_regex_failed', 'Connection string: Incorrect format... reverting to initial value', 'error' );
 
-		return $original_value;
+		return $initial_value;
 	}
 
 
@@ -107,7 +107,7 @@ class AzureApplicationInsights {
 	}
 }
 
-AzureApplicationInsights::init();
+AzureApplicationInsightsClient::init();
 
 // TODO: register shutdown hook
 // TODO: dashboard widget for the app insights api

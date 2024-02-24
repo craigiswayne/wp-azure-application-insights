@@ -1,0 +1,31 @@
+name: Create Plugin Package
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: "Echo Statements"
+        run: |
+          echo "Latest Tag: ${{github.ref_name}}"
+          echo "Repo Name: ${{ github.event.repository.name }}"
+          echo "Composer Name: ${{ GITHUB_REPOSITORY }}";
+          echo "Repository Owner: ${{ GITHUB_REPOSITORY_OWNER }}"
+          echo "GIT AUTHOR EMAIL: ${{ GIT_AUTHOR_EMAIL}}
+          echo "Files in directory:"
+          ls -laGh
+          echo "Git Config"
+          git config --global -l
+
+#      - name: Archive only specific files
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: ${{ github.event.repository.name }}
+#          path: |
+#            !.github
+#            !composer.json
+#            !README.md

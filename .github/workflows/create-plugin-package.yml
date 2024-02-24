@@ -20,60 +20,59 @@ jobs:
           depth: 0
           fetch-tags: true
 
-      - name: "Echo Statements"
-        run: |
-          which composer
-          echo "Latest Tag: $(git describe --tags --abbrev=0)"
-          echo "Repo Name: ${{ github.event.repository.name }}"
-          echo "Composer Name: ${{ github.repository }}";
-          echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "Get Composer php value"
-          echo "Files in directory:"
-          ls -laGh
-          echo "Git Config"
-          git config -l
-
-      - name: "Cache Composer dependencies"
-        uses: actions/cache@v3
-        with:
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-
-      - name: "Composer Setup"
-        uses: php-actions/composer@v6
-        with:
-          php_version: 8.2
-          args: "--optimize-autoloader --no-dev"
-
-      - name: Get Repository Owner
-        id: repo_owner
-        run: |
-          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
-          echo "OWNER_EMAIL: $OWNER_EMAIL";
-          echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
-
-      - name: Get Repository Description
-        id: repo_description
-        run: |
-          REPO_DESCRIPTION=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
-          echo 'REPO_DESCRIPTION: "$REPO_DESCRIPTION"';
-          echo 'repository_description="$REPO_DESCRIPTION"' >> $GITHUB_OUTPUT
-
-      - name: Print API data
-        run: |
-          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
-          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
-
-#      - name: Archive only specific files
-#        uses: actions/upload-artifact@v4
+#      - name: "Echo Statements"
+#        run: |
+#          echo "Latest Tag: $(git describe --tags --abbrev=0)"
+#          echo "Repo Name: ${{ github.event.repository.name }}"
+#          echo "Composer Name: ${{ github.repository }}";
+#          echo "Repository Owner: ${{ github.repository_owner }}"
+#          echo "Get Composer php value"
+#          echo "Files in directory:"
+#          ls -laGh
+#          echo "Git Config"
+#          git config -l
+#
+#      - name: "Cache: Composer"
+#        uses: actions/cache@v3
 #        with:
-#          name: ${{ github.event.repository.name }}
-#          path: |
-#            !.git
-#            !.github
-#            !.gitignore
-#            !composer.json
-#            !README.md
+#          path: /tmp/composer-cache
+#          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+#
+#      - name: "Composer Setup"
+#        uses: php-actions/composer@v6
+#        with:
+#          php_version: 8.2
+#          args: "--optimize-autoloader --no-dev"
+#
+#      - name: Get Repository Owner
+#        id: repo_owner
+#        run: |
+#          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
+#          echo "OWNER_EMAIL: $OWNER_EMAIL";
+#          echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
+#
+#      - name: Get Repository Description
+#        id: repo_description
+#        run: |
+#          REPO_DESCRIPTION=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
+#          echo 'REPO_DESCRIPTION: "$REPO_DESCRIPTION"';
+#          echo 'repository_description="$REPO_DESCRIPTION"' >> $GITHUB_OUTPUT
+#
+#      - name: Print API data
+#        run: |
+#          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
+#          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
+
+      - name: Archive only specific files
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ github.event.repository.name }}"
+          path: |
+            !.git
+            !.github
+            !.gitignore
+            !composer.json
+            !README.md
 
 # TODO: set plugin meta data version from git tag
 # TODO: set plugin meta data description from composer config (composer config description)

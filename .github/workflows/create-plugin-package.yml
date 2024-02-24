@@ -29,13 +29,13 @@ jobs:
           git config -l
 
       - name: Get Repository Owner
-        id: repo_info
+        id: repo_owner
         run: |
           OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
           echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
 
       - name: Get Repository Description
-        id: repo_info
+        id: repo_description
         run: |
           OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/readme" | jq -r '.content' | base64 -d)
           echo "repository_description=$OWNER_EMAIL" >> $GITHUB_OUTPUT

@@ -28,6 +28,16 @@ jobs:
           echo "Git Config"
           git config -l
 
+      - name: Get Repository Info
+        id: repo_info
+        run: |
+          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
+          echo "::set-output name=owner_email::$OWNER_EMAIL"
+
+      - name: Print Owner's Email
+        run: |
+          echo "Owner's Email: ${{ steps.repo_info.outputs.owner_email }}"
+
 #      - name: Archive only specific files
 #        uses: actions/upload-artifact@v4
 #        with:

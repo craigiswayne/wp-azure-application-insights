@@ -20,9 +20,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-#      - name: "Echo Statements"
-#        run: |
-#          echo "Latest Tag: $(git describe --tags --abbrev=0)"
+      - name: "Echo Statements"
+        run: |
+          echo "Latest Tag: $(git describe --tags --abbrev=0)"
 #          echo "Repo Name: ${{ github.event.repository.name }}"
 #          echo "Composer Name: ${{ github.repository }}";
 #          echo "Repository Owner: ${{ github.repository_owner }}"
@@ -73,6 +73,7 @@ jobs:
             !.github
             !.gitignore
             !composer.json
+            !composer.lock
             !README.md
 
 # TODO: set plugin meta data version from git tag

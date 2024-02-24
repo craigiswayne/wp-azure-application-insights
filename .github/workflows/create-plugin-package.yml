@@ -11,11 +11,13 @@ on:
       - main
 
 jobs:
-  build_and_test:
+  create_artifact:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
+        with:
+          fetch-tags: true
 
       - name: "Echo Statements"
         run: |

@@ -20,7 +20,7 @@ jobs:
       - name: "Echo Statements"
         run: |
           which composer
-          echo "Latest Tag: ${{github.ref_name}}"
+          echo "Latest Tag: $(git describe --tags --abbrev=0)"
           echo "Repo Name: ${{ github.event.repository.name }}"
           echo "Composer Name: ${{ github.repository }}";
           echo "Repository Owner: ${{ github.repository_owner }}"

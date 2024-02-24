@@ -20,9 +20,15 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: "Echo Statements"
+      - name: "Get Dynamic Variables"
+        id: dynamic_variables
         run: |
-          echo "Latest Tag: $(git describe --tags --abbrev=0)"
+          LATEST_TAG=$(git describe --tags --abbrev=0)
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+
+#      - name: "Echo Statements"
+#        run: |
+#          echo "Latest Tag: $(git describe --tags --abbrev=0)"
 #          echo "Repo Name: ${{ github.event.repository.name }}"
 #          echo "Composer Name: ${{ github.repository }}";
 #          echo "Repository Owner: ${{ github.repository_owner }}"
@@ -66,7 +72,7 @@ jobs:
       - name: Archive only specific files
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.event.repository.name }}"
+          name: "${{ github.event.repository.name }}-${{ steps.dynamic_variables.outputs.latest_tag }}""
           path: |
             *
             !.git

@@ -50,14 +50,12 @@ jobs:
         with:
           php_version: 8.2
           dev: yes
-          args: "--optimize-autoloader"
 
       - name: "Composer: Lint"
         uses: php-actions/composer@v6
         with:
           command: "run-script lint"
           php_version: 8.2
-          args: "--optimize-autoloader"
 
 #      - name: Get Repository Owner
 #        id: repo_owner

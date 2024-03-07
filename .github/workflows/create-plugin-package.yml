@@ -38,18 +38,26 @@ jobs:
 #          echo "Git Config"
 #          git config -l
 #
-#      - name: "Cache: Composer"
-#        uses: actions/cache@v3
-#        with:
-#          path: /tmp/composer-cache
-#          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-#
-#      - name: "Composer Setup"
-#        uses: php-actions/composer@v6
-#        with:
-#          php_version: 8.2
-#          args: "--optimize-autoloader --no-dev"
-#
+      - name: "Cache: Composer"
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: "Composer: Install"
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.2
+          dev: yes
+          args: "--optimize-autoloader"
+
+      - name: "Composer: Lint"
+        uses: php-actions/composer@v6
+        with:
+          command: "run-script lint"
+          php_version: 8.2
+          args: "--optimize-autoloader"
+
 #      - name: Get Repository Owner
 #        id: repo_owner
 #        run: |

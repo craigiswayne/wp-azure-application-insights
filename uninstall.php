@@ -5,9 +5,9 @@
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-    die;
+	die;
 }
 
 // TODO: find a better way to ref this
-delete_option('wp_azure_app_insights_option_connection_string' );
+delete_option( 'wp_azure_app_insights_option_connection_string' );
 delete_site_option( 'wp_azure_app_insights_option_connection_string' );

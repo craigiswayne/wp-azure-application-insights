@@ -82,7 +82,7 @@ jobs:
         id: version
         with:
           scheme: semver
-          increment: patch
+          increment: minor
 
       - name: Archive only specific files
         uses: actions/upload-artifact@v4

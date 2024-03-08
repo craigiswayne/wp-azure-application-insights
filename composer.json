@@ -29,7 +29,7 @@
         }
     },
     "scripts": {
-        "lint": "vendor/bin/phpcs -ps . --standard=WordPress --ignore=/vendor/*",
-        "lint-fix": "vendor/bin/phpcbf . --standard=WordPress --ignore=/vendor/*  -v"
+        "lint": "./vendor/bin/phpcs -psl . --standard=WordPress --ignore=vendor/",
+        "lint:fix": "./vendor/bin/phpcbf . --standard=WordPress --ignore=vendor/"
     }
 }

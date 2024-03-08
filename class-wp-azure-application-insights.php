@@ -18,6 +18,7 @@ const WP_AZURE_APPLICATION_INSIGHTS_PREFIX = 'wp_azure_app_insights_';
  */
 class WP_Azure_Application_Insights {
 
+
 	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $page_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
 
@@ -30,14 +31,14 @@ class WP_Azure_Application_Insights {
 	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $option_name = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_connection_string';
 
-    // phpcs:ignore Squiz.Commenting.VariableComment.Missing
+	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $regex_connection_string = '^InstrumentationKey=[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12};IngestionEndpoint=https:\/\/.*;LiveEndpoint=https:\/\/.*';
 
 	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function init(): void {
 		add_action( 'admin_menu', array( __CLASS__, 'create_menu_item' ) );
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
-		add_action( 'wp_head', array( __CLASS__, 'add_js_snippet' ) );
+		add_action( 'wp_head', array( __CLASS__, 'inject_js_snippet' ) );
 	}
 
 	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
@@ -51,13 +52,14 @@ class WP_Azure_Application_Insights {
 		);
 	}
 
-    // phpcs:ignore Squiz.Commenting.FunctionComment.Missing
+	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function options_page_content(): void {
 		$plugin_data = get_plugin_data( __FILE__ );
+		$plugin_name = wp_kses( $plugin_data['Name'], array() );
 		?>
 		<div class="wrap">
-			<h2><?php echo $plugin_data['Name']; ?></h2>
-			<form method="post" action="<?php echo admin_url( 'options.php' ); ?>">
+			<h2><?php echo wp_kses( $plugin_name, array() ); ?></h2>
+			<form method="post" action="<?php echo wp_kses( admin_url( 'options.php' ), array() ); ?>">
 				<?php
 				settings_errors( self::$option_group );
 				settings_fields( self::$option_group );
@@ -98,7 +100,7 @@ class WP_Azure_Application_Insights {
 	public static function sanitize_connection_string( string $new_value ): string {
 
 		if ( preg_match( '/' . self::$regex_connection_string . '/', $new_value ) ) {
-			add_settings_error( self::$option_group, self::$option_name . '_regex_passed', __( 'Settings saved.' ), 'success' );
+			add_settings_error( self::$option_group, self::$option_name . '_regex_passed', 'Settings saved.', 'success' );
 			return sanitize_text_field( $new_value );
 		}
 
@@ -108,12 +110,12 @@ class WP_Azure_Application_Insights {
 		return $initial_value;
 	}
 
-
+    // phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function section_callback(): void {
 		echo '<p>Enter the Connection String to turn on the App Insights functionality</p>';
 	}
 
-
+	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function connection_string_field_callback(): void {
 		$value = get_option( self::$option_name );
 		echo '<input class="widefat" type="text" required pattern="' . self::$regex_connection_string . '" name="' . self::$option_name . '" value="' . esc_attr( $value ) . '" aria-describedby="' . self::$option_name . '_validation" autocomplete="false"/>';
@@ -121,17 +123,18 @@ class WP_Azure_Application_Insights {
 		echo '<p class="description" id="' . self::$option_name . '_help"><a target="_blank" href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/sdk-connection-string?tabs=dotnet5#find-your-connection-string">How to find your connection string</a></p>';
 	}
 
-	public static function add_js_snippet(): void {
-		$connectionString = get_option( self::$option_name );
-		if ( ! $connectionString ) {
+	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
+	public static function inject_js_snippet(): void {
+		$connection_string = get_option( self::$option_name );
+		if ( ! $connection_string ) {
 			return;
 		}
 		$raw_snippet  = file_get_contents( __DIR__ . '/javascript-snippet.html' );
 		$replacements = array(
-			'/YOUR_CONNECTION_STRING/' => $connectionString,
+			'/YOUR_CONNECTION_STRING/' => $connection_string,
 		);
 		$snippet      = preg_replace( array_keys( $replacements ), array_values( $replacements ), $raw_snippet );
-		echo $snippet;
+		echo wp_kses( $snippet, array( 'script' ) );
 	}
 }
 

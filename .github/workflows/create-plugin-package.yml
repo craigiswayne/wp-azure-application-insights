@@ -91,16 +91,21 @@ jobs:
           echo "Updating PHP Version"
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' class-wp-azure-application-insights.php
 
-      - name: setup git config
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+#      - name: setup git config
+#        run: |
+#          git config user.name "GitHub Actions Bot"
+#          git config user.email "<>"
+#
+#      - name: commit
+#        run: |
+#          git add class-wp-azure-application-insights.php
+#          git commit -m "Incremented version" -m "skip ci skip actions"
+#          git push origin feature/composerify
 
-      - name: commit
-        run: |
-          git add class-wp-azure-application-insights.php
-          git commit -m "Incremented version" -m "skip ci skip actions"
-          git push origin feature/composerify
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Incrementing version number"
+          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
 
       - name: Archive only specific files
         uses: actions/upload-artifact@v4

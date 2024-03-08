@@ -1,8 +1,5 @@
 name: Create Plugin Package
 
-permissions:
-  contents: true
-
 on:
   push:
     branches:
@@ -13,6 +10,9 @@ on:
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
 
 env:
   PHP_VERSION: 8.2

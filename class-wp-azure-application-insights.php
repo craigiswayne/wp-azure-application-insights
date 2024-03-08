@@ -1,40 +1,46 @@
 <?php
-/*
-Plugin Name: Azure App Insights
-Description: Enable Azure Application Insights for your website
-Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
-Version: 3.3.1
-Author: Craig Wayne
-Author URI: https://github.com/craigiswayne/
-Requires at least: 6.4.2
-Requires PHP: 8.2
-License:  MIT
-*/
+/**
+ * Plugin Name: Azure App Insights
+ * Description: Enable Azure Application Insights for your website
+ * Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
+ * Version: 3.3.1
+ * Author: Craig Wayne
+ * Author URI: https://github.com/craigiswayne/
+ * Requires at least: 6.4.2
+ * Requires PHP: 8.2
+ * License:  MIT
+ **/
 
 const WP_AZURE_APPLICATION_INSIGHTS_PREFIX = 'wp_azure_app_insights_';
 
+/**
+ * The controller class for App Insights for both Client and Server side
+ */
 class WP_Azure_Application_Insights {
 
-	public static string $page_id                 = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
-	public static string $section_id              = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'section';
-	public static string $option_group            = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_group';
-	public static string $option_name             = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_connection_string';
+	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
+	public static string $page_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
+
+	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
+	public static string $section_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'section';
+
+	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
+	public static string $option_group = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_group';
+
+	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
+	public static string $option_name = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_connection_string';
+
+    // phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $regex_connection_string = '^InstrumentationKey=[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12};IngestionEndpoint=https:\/\/.*;LiveEndpoint=https:\/\/.*';
 
-	/**
-     * Controller for calling the initializing functions
-	 * @return void
-	 */
+	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function init(): void {
 		add_action( 'admin_menu', array( __CLASS__, 'create_menu_item' ) );
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'wp_head', array( __CLASS__, 'add_js_snippet' ) );
 	}
 
-	/**
-     * As the name says, creates a menu item for the options page in the WordPress Admin area
-	 * @return void
-	 */
+	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function create_menu_item(): void {
 		add_plugins_page(
 			get_plugin_data( __FILE__ )['Name'],
@@ -45,10 +51,7 @@ class WP_Azure_Application_Insights {
 		);
 	}
 
-	/**
-     * Prints the output for the options page
-	 * @return void
-	 */
+    // phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function options_page_content(): void {
 		$plugin_data = get_plugin_data( __FILE__ );
 		?>
@@ -67,7 +70,8 @@ class WP_Azure_Application_Insights {
 	}
 
 	/**
-     * Set up the callbacks for the settings, sections and fields
+	 * Set up the callbacks for the settings, sections and fields
+	 *
 	 * @return void
 	 */
 	public static function admin_init(): void {
@@ -87,8 +91,8 @@ class WP_Azure_Application_Insights {
 
 	/**
 	 * Ensures there is no code injection
-     *
-	 * @param string $new_value
+	 *
+	 * @param string $new_value The new value submitted on the options page.
 	 * @return string
 	 */
 	public static function sanitize_connection_string( string $new_value ): string {
@@ -108,6 +112,7 @@ class WP_Azure_Application_Insights {
 	public static function section_callback(): void {
 		echo '<p>Enter the Connection String to turn on the App Insights functionality</p>';
 	}
+
 
 	public static function connection_string_field_callback(): void {
 		$value = get_option( self::$option_name );

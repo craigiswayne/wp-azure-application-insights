@@ -6,9 +6,16 @@ on:
       - main
       - develop
       - release/*
+      - feature/composerify
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: write
+
+env:
+  PHP_VERSION: 8.2
 
 jobs:
   create_artifact:
@@ -20,11 +27,12 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: "Get Dynamic Variables"
-        id: dynamic_variables
-        run: |
-          LATEST_TAG=$(git describe --tags --abbrev=0)
-          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+#      - name: "Get Dynamic Variables"
+#        id: dynamic_variables
+#        run: |
+#          LATEST_TAG=$(git describe --tags --abbrev=0)
+#          echo "latest tag: $LATEST_TAG"
+#          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
 
 #      - name: "Echo Statements"
 #        run: |
@@ -38,18 +46,24 @@ jobs:
 #          echo "Git Config"
 #          git config -l
 #
-#      - name: "Cache: Composer"
-#        uses: actions/cache@v3
-#        with:
-#          path: /tmp/composer-cache
-#          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-#
-#      - name: "Composer Setup"
+      - name: "Cache: Composer"
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: "Composer: Install"
+        uses: php-actions/composer@v6
+        with:
+          php_version: ${{ env.PHP_VERSION }}
+          dev: yes
+
+#      - name: "Composer: Lint"
 #        uses: php-actions/composer@v6
 #        with:
+#          command: "run-script lint"
 #          php_version: 8.2
-#          args: "--optimize-autoloader --no-dev"
-#
+
 #      - name: Get Repository Owner
 #        id: repo_owner
 #        run: |
@@ -69,14 +83,44 @@ jobs:
 #          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
 #          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
+      - name: Get next version
+        uses: reecetech/version-increment@2023.9.3
+        id: version_incrementer
+
+      - name: "Update Plugin Front Matter"
+        run: |
+          echo "Updating Plugin Version"
+          sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' class-wp-azure-application-insights.php
+          echo "Updating PHP Version"
+          sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' class-wp-azure-application-insights.php
+          composer config "platform.php" "${{ env.PHP_VERSION }}"
+
+#      - name: setup git config
+#        run: |
+#          git config user.name "GitHub Actions Bot"
+#          git config user.email "<>"
+#
+#      - name: commit
+#        run: |
+#          git add class-wp-azure-application-insights.php
+#          git commit -m "Incremented version" -m "skip ci skip actions"
+#          git push origin feature/composerify
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Incrementing version number"
+          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
+          file_pattern: '*.php composer.json'
+
       - name: Archive only specific files
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.event.repository.name }}-${{ steps.dynamic_variables.outputs.latest_tag }}"
+          name: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
           path: |
             *
             !.git
             !.github
+            !vendor
             !.gitignore
             !composer.json
             !composer.lock

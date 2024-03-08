@@ -93,6 +93,7 @@ jobs:
           sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' class-wp-azure-application-insights.php
           echo "Updating PHP Version"
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' class-wp-azure-application-insights.php
+          composer config "platform.php" "${{ env.PHP_VERSION }}"
 
 #      - name: setup git config
 #        run: |
@@ -109,7 +110,7 @@ jobs:
         with:
           commit_message: "Incrementing version number"
           tagging_message: '${{ steps.version_incrementer.outputs.version }}'
-          file_pattern: '*.php'
+          file_pattern: '*.php composer.json'
 
       - name: Archive only specific files
         uses: actions/upload-artifact@v4

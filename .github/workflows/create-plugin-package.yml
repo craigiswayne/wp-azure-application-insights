@@ -11,6 +11,9 @@ on:
     branches:
       - main
 
+env:
+  PHP_VERSION: 8.2
+
 jobs:
   create_artifact:
     runs-on: ubuntu-latest
@@ -49,7 +52,7 @@ jobs:
       - name: "Composer: Install"
         uses: php-actions/composer@v6
         with:
-          php_version: 8.2
+          php_version: $PHP_VERSION
           dev: yes
 
 #      - name: "Composer: Lint"
@@ -83,6 +86,24 @@ jobs:
         with:
           scheme: semver
           increment: minor
+
+      - name: "Update Plugin Front Matter"
+        run: |
+          echo "Updating Version"
+          echo "sed -i '/ * Version:/c\ * Version: ${{ steps.version.outputs.version }}' class-wp-azure-application-insights.php"
+          echo "Updating PHP Version"
+          echo "sed -i '/ * Requires PHP:/c\ * Requires PHP: $PHP_VERSION' class-wp-azure-application-insights.php"
+
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          git add class-wp-azure-application-insights.php
+          git commit -m "Incremented version" -m "skip ci skip actions"
+          git push origin feature/composerify
 
       - name: Archive only specific files
         uses: actions/upload-artifact@v4

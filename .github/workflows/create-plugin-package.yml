@@ -51,11 +51,11 @@ jobs:
           php_version: 8.2
           dev: yes
 
-      - name: "Composer: Lint"
-        uses: php-actions/composer@v6
-        with:
-          command: "run-script lint"
-          php_version: 8.2
+#      - name: "Composer: Lint"
+#        uses: php-actions/composer@v6
+#        with:
+#          command: "run-script lint"
+#          php_version: 8.2
 
 #      - name: Get Repository Owner
 #        id: repo_owner

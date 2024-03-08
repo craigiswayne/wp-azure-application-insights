@@ -134,7 +134,9 @@ class WP_Azure_Application_Insights {
 			'/YOUR_CONNECTION_STRING/' => $connection_string,
 		);
 		$snippet      = preg_replace( array_keys( $replacements ), array_values( $replacements ), $raw_snippet );
-		echo wp_kses( $snippet, array( 'script' ) );
+		echo wp_kses( $snippet, array( 'script' => array (
+			'type' => true
+		) ) );
 	}
 }
 

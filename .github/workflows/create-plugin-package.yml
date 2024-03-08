@@ -1,5 +1,8 @@
 name: Create Plugin Package
 
+permissions:
+  contents: true
+
 on:
   push:
     branches:

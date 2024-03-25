@@ -18,6 +18,7 @@ env:
 
 jobs:
   create_artifact:
+    name: "Create Plugin Artifact"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repository"
@@ -28,8 +29,8 @@ jobs:
 
       - name: "TEST: uninstall.php file exists"
         run: |
-          file="uninstall.php"
-          if [ -f $file ]; then echo "$file exists"; else echo "$file doesnt exist"; fi;
+          file="uninstalls.php"
+          if [ -f $file ]; then echo "$file exists"; echo "$file does not exist"; else exit 1; fi;
 
 #      - name: "Get Dynamic Variables"
 #        id: dynamic_variables

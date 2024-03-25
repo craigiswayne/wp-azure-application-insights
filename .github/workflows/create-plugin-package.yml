@@ -13,6 +13,7 @@ permissions:
 
 env:
   PHP_VERSION: 8.2
+  PLUGIN_FILE: "class-wp-azure-application-insights.php"
 
 jobs:
   create_artifact:
@@ -61,12 +62,6 @@ jobs:
           php_version: ${{ env.PHP_VERSION }}
           dev: yes
 
-#      - name: "Get Required PHP Version"
-#        id: php_version_from_composer
-#        run: |
-#          COMPOSER_PHP_VERSION=$(composer config platform.php)
-#          echo "composer_php_version=$COMPOSER_PHP_VERSION" >> $GITHUB_OUTPUT
-
 #      - name: "Composer: Lint"
 #        uses: php-actions/composer@v6
 #        with:
@@ -92,17 +87,21 @@ jobs:
 #          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
 #          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
-#      - name: Get next version
-#        uses: reecetech/version-increment@2023.9.3
-#        id: version_incrementer
+      - name: "Composer Config: Description"
+        id: composer_config_description
+        run: |
+          PLUGIN_DESCRIPTION="$(composer config description)"
+          echo 'value="PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
 
-#      - name: "Update Plugin Front Matter"
-#        run: |
-#          echo "Updating Plugin Version"
-#          sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' class-wp-azure-application-insights.php
-#          echo "Updating PHP Version"
-#          sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' class-wp-azure-application-insights.php
-#          composer config "platform.php" "${{ env.PHP_VERSION }}"
+      - name: "Get next version"
+        id: version_incrementer
+        uses: reecetech/version-increment@2023.9.3
+
+      - name: "Update Plugin Front Matter"
+        run: |
+          sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' ${{ env.PLUGIN_FILE }}
+          sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
+          sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.value }}' ${{ env.PLUGIN_FILE }}
 
 #      - name: setup git config
 #        run: |
@@ -111,29 +110,26 @@ jobs:
 #
 #      - name: commit
 #        run: |
-#          git add class-wp-azure-application-insights.php
+#          git add ${{ env.PLUGIN_FILE }}
 #          git commit -m "Incremented version" -m "skip ci skip actions"
 #          git push origin feature/composerify
 
-#      - uses: stefanzweifel/git-auto-commit-action@v5
-#        with:
-#          commit_message: "Incrementing version number"
-#          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
-#          file_pattern: '*.php composer.json'
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Incrementing version number"
+          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
+          file_pattern: '*.php composer.json'
 
-#      - name: Archive only specific files
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
-#          path: |
-#            *
-#            !.git
-#            !.github
-#            !vendor
-#            !.gitignore
-#            !composer.json
-#            !composer.lock
-#            !README.md
-
-# TODO: set plugin meta data version from git tag
-# TODO: set plugin meta data description from composer config (composer config description)
+      - name: Archive only specific files
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
+          path: |
+            *
+            !.git
+            !.github
+            !vendor
+            !.gitignore
+            !composer.json
+            !composer.lock
+            !README.md

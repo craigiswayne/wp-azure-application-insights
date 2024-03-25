@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - develop
-      - feature/check-uninstall-exists
   pull_request:
     branches:
-      - main
+      - develop
 
 permissions:
   contents: write
@@ -27,9 +25,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: "TEST: uninstall.php file exists"
+      - name: "TEST: uninstall.php exists"
         run: |
-          file="uninstalls.php"
+          file="uninstall.php"
           if [ -f $file ]; then echo "$file exists"; echo "$file does not exist"; else exit 1; fi;
 
 #      - name: "Get Dynamic Variables"
@@ -139,4 +137,3 @@ jobs:
 
 # TODO: set plugin meta data version from git tag
 # TODO: set plugin meta data description from composer config (composer config description)
-# TODO: test that the uninstall.php file exists

@@ -4,19 +4,20 @@ on:
   push:
     branches:
       - main
-      - develop
   pull_request:
     branches:
-      - main
+      - develop
 
 permissions:
   contents: write
 
 env:
   PHP_VERSION: 8.2
+  PLUGIN_FILE: "class-wp-azure-application-insights.php"
 
 jobs:
   create_artifact:
+    name: "Create Plugin Artifact"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repository"
@@ -24,6 +25,11 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+
+      - name: "TEST: uninstall.php exists"
+        run: |
+          file="uninstall.php"
+          if [ -f $file ]; then echo "$file exists"; echo "$file does not exist"; else exit 1; fi;
 
 #      - name: "Get Dynamic Variables"
 #        id: dynamic_variables
@@ -81,17 +87,21 @@ jobs:
 #          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
 #          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
-      - name: Get next version
-        uses: reecetech/version-increment@2023.9.3
+      - name: "Composer Config: Description"
+        id: composer_config_description
+        run: |
+          PLUGIN_DESCRIPTION="$(composer config description)"
+          echo 'value="PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
+
+      - name: "Get next version"
         id: version_incrementer
+        uses: reecetech/version-increment@2023.9.3
 
       - name: "Update Plugin Front Matter"
         run: |
-          echo "Updating Plugin Version"
-          sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' class-wp-azure-application-insights.php
-          echo "Updating PHP Version"
-          sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' class-wp-azure-application-insights.php
-          composer config "platform.php" "${{ env.PHP_VERSION }}"
+          sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' ${{ env.PLUGIN_FILE }}
+          sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
+          sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.value }}' ${{ env.PLUGIN_FILE }}
 
 #      - name: setup git config
 #        run: |
@@ -100,7 +110,7 @@ jobs:
 #
 #      - name: commit
 #        run: |
-#          git add class-wp-azure-application-insights.php
+#          git add ${{ env.PLUGIN_FILE }}
 #          git commit -m "Incremented version" -m "skip ci skip actions"
 #          git push origin feature/composerify
 
@@ -123,7 +133,3 @@ jobs:
             !composer.json
             !composer.lock
             !README.md
-
-# TODO: set plugin meta data version from git tag
-# TODO: set plugin meta data description from composer config (composer config description)
-# TODO: test that the uninstall.php file exists

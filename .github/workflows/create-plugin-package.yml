@@ -103,16 +103,9 @@ jobs:
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
           sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.value }}' ${{ env.PLUGIN_FILE }}
 
-#      - name: setup git config
-#        run: |
-#          git config user.name "GitHub Actions Bot"
-#          git config user.email "<>"
-#
-#      - name: commit
-#        run: |
-#          git add ${{ env.PLUGIN_FILE }}
-#          git commit -m "Incremented version" -m "skip ci skip actions"
-#          git push origin feature/composerify
+      - name: "Update Composer Package Version"
+        run: |
+          composer config version ${{ steps.version_incrementer.outputs.version }}
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:

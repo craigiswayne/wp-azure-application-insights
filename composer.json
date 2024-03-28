@@ -1,6 +1,7 @@
 {
     "name": "craigiswayne/wp-azure-application-insights",
     "description": "Azure Application Insights via WordPress Plugin",
+    "version": "3.3.6-pre.ea07c74",
     "type": "wordpress-plugin",
     "keywords": [
         "wordpress",

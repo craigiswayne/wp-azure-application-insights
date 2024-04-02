@@ -91,7 +91,7 @@ jobs:
         id: composer_config_description
         run: |
           PLUGIN_DESCRIPTION="$(composer config description)"
-          echo 'value="PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
+          echo 'value="$PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
 
       - name: "Get next version"
         id: version_incrementer

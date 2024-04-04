@@ -1,0 +1,23 @@
+name: Create Plugin Package
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+permissions:
+  contents: write
+
+env:
+  PHP_VERSION: 8.2
+  PLUGIN_FILE: "class-wp-azure-application-insights.php"
+
+jobs:
+  create_artifact:
+    name: "Create Plugin Artifact"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "TEST: uninstall.php exists"
+        run: |
+          file="uninstall.php"
+          if [ -f $file ]; then echo "$file exists"; echo "$file does not exist"; else exit 1; fi;

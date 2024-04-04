@@ -1,4 +1,4 @@
-name: Create Plugin Package
+name: PR Checks
 
 on:
   pull_request:
@@ -8,15 +8,16 @@ on:
 permissions:
   contents: write
 
-env:
-  PHP_VERSION: 8.2
-  PLUGIN_FILE: "class-wp-azure-application-insights.php"
-
 jobs:
   create_artifact:
     name: "Create Plugin Artifact"
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: "TEST: uninstall.php exists"
         run: |
           file="uninstall.php"

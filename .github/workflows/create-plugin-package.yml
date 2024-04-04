@@ -50,7 +50,7 @@ jobs:
 #          echo "Git Config"
 #          git config -l
 #
-      - name: "Cache: Composer"
+      - name: "Composer: Cache"
         uses: actions/cache@v3
         with:
           path: /tmp/composer-cache
@@ -87,17 +87,17 @@ jobs:
 #          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
 #          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
-      - name: "Composer Config: Description"
+      - name: "Composer: Description"
         id: composer_config_description
         run: |
           PLUGIN_DESCRIPTION="$(composer config description)"
           echo 'value="$PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
 
-      - name: "Get next version"
+      - name: "Version: Increment"
         id: version_incrementer
         uses: reecetech/version-increment@2023.9.3
 
-      - name: "Update Plugin Front Matter"
+      - name: "Update: Plugin Front Matter"
         run: |
           sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' ${{ env.PLUGIN_FILE }}
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
@@ -107,13 +107,14 @@ jobs:
         run: |
           composer config version ${{ steps.version_incrementer.outputs.version }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: 'Git Add, Tag and Release'
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Incrementing version number"
           tagging_message: '${{ steps.version_incrementer.outputs.version }}'
           file_pattern: '*.php composer.json'
 
-      - name: Archive only specific files
+      - name: 'Archive only specific files'
         uses: actions/upload-artifact@v4
         with:
           name: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
@@ -125,4 +126,8 @@ jobs:
             !.gitignore
             !composer.json
             !composer.lock
-            !README.md
+            !*.md
+            !DOCKER_ENV
+            !Dockerfile-php-build
+            !docker_tag
+            !output.txt

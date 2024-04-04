@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   create_artifact:
-    name: "Create Plugin Artifact"
+    name: "PR Check Job"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repository"

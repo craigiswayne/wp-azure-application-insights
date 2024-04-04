@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Azure App Insights
- * Description: "$PLUGIN_DESCRIPTION"
+ * Description: Azure Application Insights via WordPress Plugin
  * Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
  * Version: 3.3.7
  * Author: Craig Wayne

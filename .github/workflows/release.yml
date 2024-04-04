@@ -112,3 +112,22 @@ jobs:
             !Dockerfile-php-build
             !docker_tag
             !output.log
+
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          prerelease: false
+          files: |
+            *
+            !.git
+            !.github
+            !vendor
+            !.gitignore
+            !composer.json
+            !composer.lock
+            !*.md
+            !DOCKER_ENV
+            !Dockerfile-php-build
+            !docker_tag
+            !output.log

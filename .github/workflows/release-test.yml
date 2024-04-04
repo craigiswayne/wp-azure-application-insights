@@ -15,11 +15,12 @@ jobs:
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
+#        with:
+#          fetch-depth: 0
+#          fetch-tags: true
 
       - uses: ncipollo/release-action@v1
+#        tag: '3.3.9'
         with:
-          tag: '3.39'
+          tag: '3.3.9'
           artifacts: "*.php"

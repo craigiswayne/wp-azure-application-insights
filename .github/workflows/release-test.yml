@@ -1,0 +1,25 @@
+name: Create Plugin Package
+
+on:
+  push:
+    branches:
+      - test
+
+permissions:
+  contents: write
+
+jobs:
+  create_artifact:
+    name: "Create Plugin Artifact"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: '3.39'
+          artifacts: "*.php"

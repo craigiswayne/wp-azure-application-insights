@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Azure App Insights
- * Description: "PLUGIN_DESCRIPTION"
+ * Description: "$PLUGIN_DESCRIPTION"
  * Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
- * Version: 3.3.6
+ * Version: 3.3.7
  * Author: Craig Wayne
  * Author URI: https://github.com/craigiswayne/
  * Requires at least: 6.4.2

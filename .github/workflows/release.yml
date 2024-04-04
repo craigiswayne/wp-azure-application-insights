@@ -22,9 +22,9 @@ jobs:
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
+#        with:
+#          fetch-depth: 0
+#          fetch-tags: true
 
 #      - name: "Echo Statements"
 #        run: |
@@ -115,8 +115,20 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          tag: '${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}'
-          artifacts: "*.php"
+          tag: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
+          artifacts: |
+            *
+            !.git
+            !.github
+            !vendor
+            !.gitignore
+            !composer.json
+            !composer.lock
+            !*.md
+            !DOCKER_ENV
+            !Dockerfile-php-build
+            !docker_tag
+            !output.log
 
 
 #      - name: Release

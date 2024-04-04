@@ -3,7 +3,7 @@ name: Create Plugin Package
 on:
   push:
     branches:
-      - test
+      - feature/test
 
 permissions:
   contents: write

@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - develop
-#  pull_request:
-#    branches:
-#      - develop
 
 permissions:
   contents: write
@@ -22,22 +19,7 @@ jobs:
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 0
-#          fetch-tags: true
 
-#      - name: "Echo Statements"
-#        run: |
-#          echo "Latest Tag: $(git describe --tags --abbrev=0)"
-#          echo "Repo Name: ${{ github.event.repository.name }}"
-#          echo "Composer Name: ${{ github.repository }}";
-#          echo "Repository Owner: ${{ github.repository_owner }}"
-#          echo "Get Composer php value"
-#          echo "Files in directory:"
-#          ls -laGh
-#          echo "Git Config"
-#          git config -l
-#
       - name: "Composer: Cache"
         uses: actions/cache@v3
         with:
@@ -49,24 +31,6 @@ jobs:
         with:
           php_version: ${{ env.PHP_VERSION }}
           dev: yes
-
-#      - name: "Composer: Lint"
-#        uses: php-actions/composer@v6
-#        with:
-#          command: "run-script lint"
-#          php_version: 8.2
-
-#      - name: Get Repository Owner
-#        id: repo_owner
-#        run: |
-#          OWNER_EMAIL=$(curl -s "https://api.github.com/repos/${{ github.repository }}/owner" | jq -r '.email')
-#          echo "OWNER_EMAIL: $OWNER_EMAIL";
-#          echo "repository_owner_email=$OWNER_EMAIL" >> $GITHUB_OUTPUT
-#
-#      - name: Print API data
-#        run: |
-#          echo "Repository Owner's Email: ${{ steps.repo_info.outputs.repository_owner_email }}"
-#          echo "Repository Description: ${{ steps.repo_info.outputs.repository_description }}"
 
       - name: "Composer: Description"
         id: composer_config_description
@@ -99,15 +63,6 @@ jobs:
         with:
           tag: "${{ steps.version_incrementer.outputs.version }}"
           artifacts: |
-            *
-            !.git
-            !.github
-            !vendor
-            !.gitignore
-            !composer.json
-            !composer.lock
-            !*.md
-            !DOCKER_ENV
-            !Dockerfile-php-build
-            !docker_tag
-            !output.log
+            ${{ env.PLUGIN_FILE }}
+            javascript-snippet.html
+            uninstall.php

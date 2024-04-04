@@ -43,5 +43,5 @@ jobs:
           php_version: ${{ env.PHP_VERSION }}
           dev: yes
 
-      - name: Validate composer.json and composer.lock
+      - name: "Composer: Validate"
         run: composer validate --strict

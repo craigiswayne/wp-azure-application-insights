@@ -113,22 +113,28 @@ jobs:
             !docker_tag
             !output.log
 
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      - uses: ncipollo/release-action@v1
         with:
-          tag_name: "${{ steps.version_incrementer.outputs.version }}"
-          prerelease: false
-          files: |
-            *
-            !.git
-            !.github
-            !vendor
-            !.gitignore
-            !composer.json
-            !composer.lock
-            !*.md
-            !DOCKER_ENV
-            !Dockerfile-php-build
-            !docker_tag
-            !output.log
+          artifacts: "*.php"
+
+
+#      - name: Release
+#        uses: softprops/action-gh-release@v2
+#        with:
+#          tag_name: "${{ steps.version_incrementer.outputs.version }}"
+#          prerelease: false
+#          files: |
+#            *
+#            !.git
+#            !.github
+#            !vendor
+#            !.gitignore
+#            !composer.json
+#            !composer.lock
+#            !*.md
+#            !DOCKER_ENV
+#            !Dockerfile-php-build
+#            !docker_tag
+#            !output.log
+
+

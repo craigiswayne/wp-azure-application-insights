@@ -84,7 +84,7 @@ jobs:
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
           sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.plugin_description }}' ${{ env.PLUGIN_FILE }}
 
-      - name: "Update Composer Package Version"
+      - name: "Update: Composer Package Version"
         run: |
           composer config version ${{ steps.version_incrementer.outputs.version }}
 
@@ -95,27 +95,9 @@ jobs:
           tagging_message: '${{ steps.version_incrementer.outputs.version }}'
           file_pattern: '*.php composer.json'
 
-      - name: 'Archive only specific files'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
-          path: |
-            *
-            !.git
-            !.github
-            !vendor
-            !.gitignore
-            !composer.json
-            !composer.lock
-            !*.md
-            !DOCKER_ENV
-            !Dockerfile-php-build
-            !docker_tag
-            !output.log
-
       - uses: ncipollo/release-action@v1
         with:
-          tag: "${{ github.event.repository.name }}-${{ steps.version_incrementer.outputs.version }}"
+          tag: "${{ steps.version_incrementer.outputs.version }}"
           artifacts: |
             *
             !.git
@@ -129,25 +111,3 @@ jobs:
             !Dockerfile-php-build
             !docker_tag
             !output.log
-
-
-#      - name: Release
-#        uses: softprops/action-gh-release@v2
-#        with:
-#          tag_name: "${{ steps.version_incrementer.outputs.version }}"
-#          prerelease: false
-#          files: |
-#            *
-#            !.git
-#            !.github
-#            !vendor
-#            !.gitignore
-#            !composer.json
-#            !composer.lock
-#            !*.md
-#            !DOCKER_ENV
-#            !Dockerfile-php-build
-#            !docker_tag
-#            !output.log
-
-

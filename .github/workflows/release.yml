@@ -26,11 +26,6 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: "TEST: uninstall.php exists"
-        run: |
-          file="uninstall.php"
-          if [ -f $file ]; then echo "$file exists"; echo "$file does not exist"; else exit 1; fi;
-
 #      - name: "Echo Statements"
 #        run: |
 #          echo "Latest Tag: $(git describe --tags --abbrev=0)"
@@ -77,7 +72,7 @@ jobs:
         id: composer_config_description
         run: |
           PLUGIN_DESCRIPTION="$(composer config description)"
-          echo 'value="$PLUGIN_DESCRIPTION"' >> $GITHUB_OUTPUT
+          echo "plugin_description=$PLUGIN_DESCRIPTION" >> $GITHUB_OUTPUT
 
       - name: "Version: Increment"
         id: version_incrementer
@@ -87,7 +82,7 @@ jobs:
         run: |
           sed -i '/ * Version:/c\ * Version: ${{ steps.version_incrementer.outputs.version }}' ${{ env.PLUGIN_FILE }}
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
-          sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.value }}' ${{ env.PLUGIN_FILE }}
+          sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.plugin_description }}' ${{ env.PLUGIN_FILE }}
 
       - name: "Update Composer Package Version"
         run: |

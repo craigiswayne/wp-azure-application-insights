@@ -48,12 +48,12 @@ jobs:
           sed -i '/ * Requires PHP:/c\ * Requires PHP: ${{ env.PHP_VERSION }}' ${{ env.PLUGIN_FILE }}
           sed -i '/ * Description:/c\ * Description: ${{ steps.composer_config_description.outputs.plugin_description }}' ${{ env.PLUGIN_FILE }}
 
-      - name: 'Git Add, Tag and Release'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Incrementing version number"
-          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
-          file_pattern: '*.php composer.json'
+#      - name: 'Git Add, Tag and Release'
+#        uses: stefanzweifel/git-auto-commit-action@v5
+#        with:
+#          commit_message: "Incrementing version number"
+#          tagging_message: '${{ steps.version_incrementer.outputs.version }}'
+#          file_pattern: '*.php composer.json'
 
       - uses: ncipollo/release-action@v1
         with:

@@ -44,3 +44,17 @@ trackCustomEvent('MyCustomEvent');
 ```
 
 ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics
+
+
+---
+
+### Dashboards
+
+1. Enable App Insights for your resources
+2. Create the Queries
+3. Once you've got your query
+4. Click "Pin to" dropdown
+5. Click "Azure dashboard"
+6. Click "Existing Tab" -> "Shared" radio button
+7. Choose your subscription
+8. Choose your dashboard

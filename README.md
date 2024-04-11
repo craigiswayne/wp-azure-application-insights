@@ -51,9 +51,9 @@
    * Location: StateOrProvince
    * Location: Country
    * Device Type Version
-5. Performance Counters
-6. Requests
-7. Traces
+6. Performance Counters
+7. Requests
+8. Traces
    * Message
    * Severity Level
    * URL Path
@@ -65,6 +65,23 @@
    * Location: StateOrProvince
    * Location: Country
    * Device Type Version
+9. WordPress Events
+   * User
+     * Login Success
+     * Login Failed
+     * Logout
+     *  New Registration
+   * Plugin
+     * Activated
+     * Deactivated
+     * Deleted
+   * Upgrade Events:
+     * Theme
+     * Plugin
+     * Translations
+   * Theme:
+     * Deleted
+     * Switched
 
 ---
 

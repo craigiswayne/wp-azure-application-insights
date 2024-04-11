@@ -11,37 +11,204 @@
  * License:  MIT
  **/
 
+use ApplicationInsights\Telemetry_Client;
+
 const WP_AZURE_APPLICATION_INSIGHTS_PREFIX = 'wp_azure_app_insights_';
+define('WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH',plugin_dir_path( __FILE__ ));
 
 /**
  * The controller class for App Insights for both Client and Server side
  */
 class WP_Azure_Application_Insights {
 
+    public static array $settings = [
+        [
+            'id' => 'wpaai_instrumentation_key',
+            'label' => 'Instrumentation Key',
+            'pattern' => '[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12}'
+        ],
+        [
+            'id' => 'wpaai_ingestion_endpoint',
+            'label' => 'Ingestion Endpoint',
+            'pattern' => 'https:\/\/(.*)\.in\.applicationinsights\.azure\.com\/$'
+        ],
+        [
+            'id' => 'wpaai_live_endpoint',
+            'label' => 'Live Endpoint',
+            'pattern' => 'https:\/\/[\w.]+\.livediagnostics\.monitor\.azure\.com\/$'
+        ],
+        [
+            'id' => 'wpaai_application_id',
+            'label' => 'Application ID',
+            'pattern' => '[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12}'
+        ]
+    ];
 
-	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
+    public static array $events_tracked = [
+        [
+            'hook_name' => 'wp_login',
+            'callback' => 'on_login_success',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'wp_logout',
+            'callback' => 'on_logout',
+            'num_of_args' => 1
+        ],
+        [
+            'hook_name' => 'wp_login_failed',
+            'callback' => 'on_login_failed',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'activate_plugin',
+            'callback' => 'on_plugin_activate',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'deactivated_plugin',
+            'callback' => 'on_plugin_deactivate',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'deleted_plugin',
+            'callback' => 'on_plugin_delete',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'upgrader_process_complete',
+            'callback' => 'on_upgrade_complete',
+            'num_of_args' => 2
+        ],
+        [
+            'hook_name' => 'register_new_user',
+            'callback' => 'on_user_register',
+            'num_of_args' => 1
+        ],
+        [
+            'hook_name' => 'deleted_theme',
+            'callback' => 'on_theme_delete',
+            'num_of_args' => 1
+        ],
+        [
+            'hook_name' => 'after_switch_theme',
+            'callback' => 'on_theme_switch',
+            'num_of_args' => 1
+        ],
+
+        [
+            'hook_name' => 'shutdown',
+            'callback' => 'on_shutdown',
+            'num_of_args' => 0
+        ]
+    ];
+
 	public static string $page_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
 
-	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $section_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'section';
 
-	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
 	public static string $option_group = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_group';
 
-	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
-	public static string $option_name = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'option_connection_string';
+    public static Telemetry_Client $_telemetry_client;
 
-	// phpcs:ignore Squiz.Commenting.VariableComment.Missing
-	public static string $regex_connection_string = '^InstrumentationKey=[a-z\d]{8}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{4}-[a-z\d]{12};IngestionEndpoint=https:\/\/.*;LiveEndpoint=https:\/\/.*';
-
-	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
 	public static function init(): void {
-		add_action( 'admin_menu', array( __CLASS__, 'create_menu_item' ) );
+        self::$_telemetry_client = self::$_telemetry_client ?? new Telemetry_Client();
+        $context = self::$_telemetry_client->getContext();
+        $instrumentation_key = get_option('wpaai_instrumentation_key');
+        $context->setInstrumentationKey($instrumentation_key);
+        $context->getLocationContext()->setIp($_SERVER['REMOTE_ADDR']);
+
+        self::listen_for_events();
+
+        add_action( 'admin_menu', array( __CLASS__, 'create_menu_item' ) );
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
 		add_action( 'wp_head', array( __CLASS__, 'inject_js_snippet' ) );
 	}
 
-	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
+    public static function listen_for_events(): void {
+        foreach(self::$events_tracked as $event_data){
+            add_action($event_data['hook_name'], [__CLASS__, $event_data['callback']], 15, $event_data['num_of_args']);
+        }
+    }
+
+    public static function on_login_success($user_login, $user): void {
+        self::$_telemetry_client
+            ->getContext()
+            ->getUserContext()
+            ->setAuthUserId($user->data->ID);
+
+        self::$_telemetry_client
+            ->trackEvent('login', [
+                'ID' => $user->data->ID,
+                'user_login'  => $user_login,
+                'user_email' => $user->data->user_email,
+                'display_name' => $user->data->display_name
+            ]);
+    }
+
+    public static function on_logout($user_id): void {
+        self::$_telemetry_client->trackEvent('login', [
+            'ID' => $user_id
+        ]);
+    }
+
+    public static function on_login_failed($username, WP_Error $error): void {
+        self::$_telemetry_client->trackEvent('login_failed', [
+            'username' => $username,
+            'error' => wp_kses($error->get_error_message(), [])
+        ]);
+    }
+
+    public static function on_plugin_activate($plugin, $network_wide): void {
+        self::$_telemetry_client->trackEvent('plugin_activated', [
+            'plugin' => $plugin,
+            'network_wide' => $network_wide
+        ]);
+    }
+
+    public static function on_plugin_deactivate($plugin, $network_deactivating): void {
+        self::$_telemetry_client->trackEvent('plugin_deactivated', [
+            'plugin' => $plugin,
+            'network_deactivating' => $network_deactivating
+        ]);
+    }
+
+    public static function on_plugin_delete($plugin_file, $deleted): void {
+        self::$_telemetry_client->trackEvent('plugin_deleted', [
+            'plugin_file' => $plugin_file,
+            'deleted' => $deleted
+        ]);
+    }
+
+    public static function on_upgrade_complete($upgrade_class, array $hook_extra): void {
+        $event_name = 'upgrader_process_complete_'.$hook_extra["type"];
+        self::$_telemetry_client->trackEvent($event_name, $hook_extra);
+    }
+
+    public static function on_user_register($user_id): void {
+        self::$_telemetry_client->trackEvent('new_user_registration', [
+            'user_id' => $user_id
+        ]);
+    }
+
+    public static function on_theme_delete($stylesheet, $deleted): void {
+        self::$_telemetry_client->trackEvent('theme_deleted', [
+            'stylesheet' => $stylesheet,
+            'deleted' => $deleted
+        ]);
+    }
+
+    public static function on_theme_switch($stylesheet, $old_theme): void {
+        self::$_telemetry_client->trackEvent('theme_switched', [
+            'stylesheet' => $stylesheet,
+            'old_theme' => $old_theme
+        ]);
+    }
+
+    public static function on_shutdown(): void {
+        self::$_telemetry_client->flush();
+    }
+
 	public static function create_menu_item(): void {
 		add_plugins_page(
 			get_plugin_data( __FILE__ )['Name'],
@@ -50,95 +217,143 @@ class WP_Azure_Application_Insights {
 			'wp-azure-app-insights',
 			array( __CLASS__, 'options_page_content' )
 		);
+        add_plugins_page(
+            get_plugin_data( __FILE__ )['Name']. ' - Migrate Legacy Options',
+            get_plugin_data( __FILE__ )['Name'].' - Migrate Legacy Options',
+            'manage_options',
+            'wp-azure-app-insights-legacy',
+            array( __CLASS__, 'migrate_legacy_options' )
+        );
 	}
 
-	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
+    /**
+     * Set up the callbacks for the settings, sections and fields
+     *
+     * @return void
+     */
+    public static function admin_init(): void {
+        add_settings_section( self::$section_id, '', '__return_false', self::$page_id );
+
+        foreach(self::$settings as $setting){
+            register_setting(self::$option_group, $setting['id'], array( 'sanitize_callback' => [__CLASS__, 'sanitize_option_value_callback_'.$setting['id']]));
+            add_settings_field($setting['id'], $setting['label'], [__CLASS__, 'field_html_'.$setting['id']], self::$page_id, self::$section_id);
+        }
+    }
+
+    public static function inject_js_snippet(): void {
+        $snippet_path = __DIR__ . '/javascript-snippet.html';
+        if (!file_exists($snippet_path)) {
+            return;
+        }
+        $raw_snippet  = file_get_contents( $snippet_path );
+        echo $raw_snippet;
+    }
+
 	public static function options_page_content(): void {
 		$plugin_data = get_plugin_data( __FILE__ );
-		$plugin_name = wp_kses( $plugin_data['Name'], array() );
-		?>
-		<div class="wrap">
-			<h2><?php echo wp_kses( $plugin_name, array() ); ?></h2>
-			<form method="post" action="<?php echo wp_kses( admin_url( 'options.php' ), array() ); ?>">
-				<?php
-				settings_errors( self::$option_group );
-				settings_fields( self::$option_group );
-				do_settings_sections( self::$page_id );
-				submit_button();
-				?>
-			</form>
-		</div>
-		<?php
+        require_once WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH.'/page-admin.php';
 	}
 
-	/**
-	 * Set up the callbacks for the settings, sections and fields
-	 *
-	 * @return void
-	 */
-	public static function admin_init(): void {
-		register_setting( self::$option_group, self::$option_name, array( __CLASS__, 'sanitize_connection_string' ) );
-		add_settings_section( self::$section_id, '', '__return_false', self::$page_id );
-		add_settings_field(
-			self::$option_name,
-			'Connection String',
-			array(
-				__CLASS__,
-				'connection_string_field_callback',
-			),
-			self::$page_id,
-			self::$section_id
-		);
-	}
+    public static function __callStatic(string $method, $arguments) {
+        $field_html_prefix = 'field_html_';
+        if(str_starts_with($method, $field_html_prefix)){
+            return self::field_html_generic(substr($method, strlen($field_html_prefix)));
+        }
 
-	/**
-	 * Ensures there is no code injection
-	 *
-	 * @param string $new_value The new value submitted on the options page.
-	 * @return string
-	 */
-	public static function sanitize_connection_string( string $new_value ): string {
+        $sanitize_option_value_callback_prefix = 'sanitize_option_value_callback_';
+        if(str_starts_with($method, $sanitize_option_value_callback_prefix)){
+            return self::sanitize_option_value_callback(substr($method, strlen($sanitize_option_value_callback_prefix)), $arguments[0]);
+        }
+    }
 
-		if ( preg_match( '/' . self::$regex_connection_string . '/', $new_value ) ) {
-			add_settings_error( self::$option_group, self::$option_name . '_regex_passed', 'Settings saved.', 'success' );
-			return sanitize_text_field( $new_value );
-		}
+    public static function get_setting_data(string $setting_id): array {
+        $setting_index = array_search($setting_id, array_column(self::$settings, 'id'));
+        $setting_data =  self::$settings[$setting_index];
+        $setting_data['value'] = get_option($setting_id);
+        return $setting_data;
+    }
 
-		$initial_value = get_option( self::$option_name );
-		add_settings_error( self::$option_group, self::$option_name . '_regex_failed', 'Connection string: Incorrect format... reverting to initial value', 'error' );
+    public static function field_html_generic(string $setting_id): string {
+        $setting = self::get_setting_data($setting_id);
 
-		return $initial_value;
-	}
+        $pattern_html = '';
+        $validation_help_html = '';
 
-    // phpcs:ignore Squiz.Commenting.FunctionComment.Missing
-	public static function section_callback(): void {
-		echo '<p>Enter the Connection String to turn on the App Insights functionality</p>';
-	}
+        if($setting['pattern']){
+            $pattern_html = "required pattern='{$setting['pattern']}'";
+            $validation_help_html = "<p class='description' id='{$setting_id}_validation'>Format: <code>{$setting['pattern']}</code></p>";
+        }
 
-	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
-	public static function connection_string_field_callback(): void {
-		$value = get_option( self::$option_name );
-		echo '<input class="widefat" type="text" required pattern="' . self::$regex_connection_string . '" name="' . self::$option_name . '" value="' . esc_attr( $value ) . '" aria-describedby="' . self::$option_name . '_validation" autocomplete="false"/>';
-		echo '<p class="description" id="' . self::$option_name . '_validation">Format: <code>' . self::$regex_connection_string . '</code></p>';
-		echo '<p class="description" id="' . self::$option_name . '_help"><a target="_blank" href="https://learn.microsoft.com/en-us/azure/azure-monitor/app/sdk-connection-string?tabs=dotnet5#find-your-connection-string">How to find your connection string</a></p>';
-	}
+        $value = esc_attr($setting['value']);
 
-	// phpcs:ignore Squiz.Commenting.FunctionComment.Missing
-	public static function inject_js_snippet(): void {
-		$connection_string = get_option( self::$option_name );
-		if ( ! $connection_string ) {
-			return;
-		}
-		$raw_snippet  = file_get_contents( __DIR__ . '/javascript-snippet.html' );
-		$replacements = array(
-			'/YOUR_CONNECTION_STRING/' => $connection_string,
-		);
-		$snippet      = preg_replace( array_keys( $replacements ), array_values( $replacements ), $raw_snippet );
-		// echo wp_kses( $snippet, array( 'script' => array (
-		// 'type' => true
-		// ) ) );
-		echo $snippet;
-	}
+        $all_html = "<input class='widefat' type='text' autocomplete='false' aria-autocomplete='none' name='$setting_id' value='$value' $pattern_html /> ";
+        $all_html .= $validation_help_html;
+        echo $all_html;
+        return $all_html;
+    }
+
+    public static function sanitize_option_value_callback(string $setting_id, ?string $new_value): string {
+        $setting = self::get_setting_data($setting_id);
+
+        if(!$new_value || $new_value === $setting['value']){
+            return $setting['value'];
+        }
+
+        if(!$setting['pattern']){
+            return sanitize_text_field( $new_value );
+        }
+
+        if(!preg_match( '/' . $setting['pattern'] . '/', $new_value )){
+            add_settings_error( self::$option_group, $setting_id . '_regex_failed', "Validation failed: {$setting['label']} <small>(reverting to initial value)</small>" );
+            return $setting['value'];
+        }
+
+        add_settings_error( self::$option_group, $setting_id . '_regex_passed', "Setting updated: {$setting['label']}", 'success');
+        self::generate_javascript_snippet([$setting_id => $new_value]);
+        return sanitize_text_field( $new_value );
+    }
+
+    public static function generate_javascript_snippet($new_vals = []): void {
+        $connection_string = self::getConnectionString($new_vals);
+        if ( ! $connection_string ) {
+            return;
+        }
+        $raw_snippet  = file_get_contents( __DIR__ . '/javascript-snippet-sample.html' );
+        $replacements = array(
+            '/YOUR_CONNECTION_STRING/' => $connection_string,
+        );
+        $snippet      = preg_replace( array_keys( $replacements ), array_values( $replacements ), $raw_snippet );
+        file_put_contents(__DIR__.'/javascript-snippet.html', $snippet);
+        add_settings_error( self::$option_group, 'snippet_updated', "Javascript snippet updated", 'success');
+    }
+
+    public static function getConnectionString(array $new_vals = []): ?string {
+        $options = [];
+        foreach(self::$settings as $setting) {
+            $options[$setting['id']] = $new_vals[$setting['id']] ?? get_option($setting['id']);
+        }
+
+        $options_with_values = array_filter($options, function($a){
+            return !!$a;
+        });
+
+        if(count($options_with_values) !== count($options)){
+            return null;
+        }
+
+        [$instrumentation_key, $ingestion_endpoint, $live_endpoint, $application_id] = array_values($options_with_values);
+
+        return "InstrumentationKey=$instrumentation_key;IngestionEndpoint=$ingestion_endpoint;LiveEndpoint=$live_endpoint;ApplicationId=$application_id";
+    }
+
+    /**
+     * Created a new options structure
+     * @since 3.3.16
+     * @return void
+     */
+    public static function migrate_legacy_options(): void {
+        require_once WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH.'/migrate-legacy-options.php';
+    }
 }
 
 WP_Azure_Application_Insights::init();

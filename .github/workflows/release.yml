@@ -32,7 +32,13 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: ${{ env.PHP_VERSION }}
-          dev: yes
+          dev: no
+
+      - name: "Composer: Validate"
+        uses: php-actions/composer@v6
+        with:
+          command: 'validate'
+          args: '--strict'
 
       - name: "Composer: Description"
         id: composer_config_description

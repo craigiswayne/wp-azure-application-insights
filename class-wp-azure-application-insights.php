@@ -3,7 +3,7 @@
  * Plugin Name: Azure App Insights
  * Description: Azure Application Insights in WordPress
  * Plugin URI: https://github.com/craigiswayne/wp-azure-application-insights
- * Version: 3.3.18
+ * Version: 3.3.19
  * Author: Craig Wayne
  * Author URI: https://github.com/craigiswayne/
  * Requires at least: 6.4.2
@@ -96,11 +96,15 @@ class WP_Azure_Application_Insights
             'callback' => 'on_theme_switch',
             'num_of_args' => 1
         ],
-
         [
             'hook_name' => 'shutdown',
             'callback' => 'on_shutdown',
             'num_of_args' => 0
+        ],
+        [
+            'hook_name' => 'loop_end',
+            'callback' => 'on_search',
+            'num_of_args' => 1
         ]
     ];
 
@@ -221,6 +225,18 @@ class WP_Azure_Application_Insights
         self::$_telemetry_client->flush();
     }
 
+    public static function on_search(WP_Query $query)
+    {
+        if (!$query->is_search()) {
+            return;
+        }
+
+        self::track_event('search', [
+            's' => $query->get('s'),
+            'found_posts' => $query->found_posts
+        ]);
+    }
+
     public static function create_menu_item(): void
     {
         add_plugins_page(
@@ -229,13 +245,6 @@ class WP_Azure_Application_Insights
             'manage_options',
             'wp-azure-app-insights',
             array(__CLASS__, 'options_page_content')
-        );
-        add_plugins_page(
-            get_plugin_data(__FILE__)['Name'] . ' - Migrate Legacy Options',
-            get_plugin_data(__FILE__)['Name'] . ' - Migrate Legacy Options',
-            'manage_options',
-            'wp-azure-app-insights-legacy',
-            array(__CLASS__, 'migrate_legacy_options')
         );
     }
 
@@ -366,16 +375,6 @@ class WP_Azure_Application_Insights
         [$instrumentation_key, $ingestion_endpoint, $live_endpoint, $application_id] = array_values($options_with_values);
 
         return "InstrumentationKey=$instrumentation_key;IngestionEndpoint=$ingestion_endpoint;LiveEndpoint=$live_endpoint;ApplicationId=$application_id";
-    }
-
-    /**
-     * Created a new options structure
-     * @return void
-     * @since 3.3.16
-     */
-    public static function migrate_legacy_options(): void
-    {
-        require_once WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . '/migrate-legacy-options.php';
     }
 
     public static function track_event(string $event_name, array $args = []): void

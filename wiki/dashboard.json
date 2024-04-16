@@ -8,7 +8,7 @@
             "position": {
               "x": 0,
               "y": 0,
-              "colSpan": 4,
+              "colSpan": 5,
               "rowSpan": 1
             },
             "metadata": {
@@ -27,7 +27,7 @@
           },
           "1": {
             "position": {
-              "x": 4,
+              "x": 5,
               "y": 0,
               "colSpan": 1,
               "rowSpan": 1
@@ -37,9 +37,9 @@
                 {
                   "name": "ComponentId",
                   "value": {
-                    "Name": "microgamingcorporate",
-                    "SubscriptionId": "9dfde687-6345-43fd-974e-d74b1bbe8b2d",
-                    "ResourceGroup": "wordpress-sites"
+                    "Name": "YOUR-APP-INSIGHTS-NAME",
+                    "SubscriptionId": "YOUR-SUBSCRIPTION-ID",
+                    "ResourceGroup": "YOUR-RESOURCE-GROUP-NAME"
                   }
                 },
                 {
@@ -75,9 +75,9 @@
                 {
                   "name": "id",
                   "value": {
-                    "Name": "microgamingcorporate",
-                    "SubscriptionId": "9dfde687-6345-43fd-974e-d74b1bbe8b2d",
-                    "ResourceGroup": "wordpress-sites"
+                    "Name": "YOUR-APP-INSIGHTS-NAME",
+                    "SubscriptionId": "YOUR-SUBSCRIPTION-ID",
+                    "ResourceGroup": "YOUR-RESOURCE-GROUP-NAME"
                   }
                 },
                 {
@@ -95,46 +95,10 @@
           },
           "2": {
             "position": {
-              "x": 5,
-              "y": 0,
-              "colSpan": 1,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "ComponentId",
-                  "value": {
-                    "Name": "microgamingcorporate",
-                    "SubscriptionId": "9dfde687-6345-43fd-974e-d74b1bbe8b2d",
-                    "ResourceGroup": "wordpress-sites"
-                  }
-                },
-                {
-                  "name": "TimeContext",
-                  "value": {
-                    "durationMs": 86400000,
-                    "endTime": null,
-                    "createdTime": "2018-05-04T01:22:35.782Z",
-                    "isInitialTime": true,
-                    "grain": 1,
-                    "useDashboardTimeRange": true
-                  }
-                }
-              ],
-              "type": "Extension/AppInsightsExtension/PartType/UsageUsersOverviewPart",
-              "asset": {
-                "idInputName": "ComponentId",
-                "type": "ApplicationInsights"
-              }
-            }
-          },
-          "3": {
-            "position": {
-              "x": 6,
-              "y": 0,
-              "colSpan": 7,
-              "rowSpan": 3
+              "x": 0,
+              "y": 1,
+              "colSpan": 18,
+              "rowSpan": 4
             },
             "metadata": {
               "inputs": [
@@ -145,7 +109,7 @@
                       "metrics": [
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                           },
                           "name": "sessions/count",
                           "aggregationType": 5,
@@ -157,7 +121,7 @@
                         },
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                           },
                           "name": "users/count",
                           "aggregationType": 5,
@@ -193,7 +157,7 @@
                           "extensionName": "HubsExtension",
                           "bladeName": "ResourceMenuBlade",
                           "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
                             "menuid": "segmentationUsers"
                           }
                         }
@@ -214,7 +178,7 @@
                       "metrics": [
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                           },
                           "name": "sessions/count",
                           "aggregationType": 5,
@@ -226,7 +190,7 @@
                         },
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                           },
                           "name": "users/count",
                           "aggregationType": 5,
@@ -263,7 +227,7 @@
                           "extensionName": "HubsExtension",
                           "bladeName": "ResourceMenuBlade",
                           "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
                             "menuid": "segmentationUsers"
                           }
                         }
@@ -274,12 +238,12 @@
               }
             }
           },
-          "4": {
+          "3": {
             "position": {
-              "x": 13,
-              "y": 0,
-              "colSpan": 7,
-              "rowSpan": 6
+              "x": 0,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 5
             },
             "metadata": {
               "inputs": [
@@ -295,14 +259,14 @@
                   "name": "Scope",
                   "value": {
                     "resourceIds": [
-                      "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                     ]
                   },
                   "isOptional": true
                 },
                 {
                   "name": "PartId",
-                  "value": "91997992-3fff-4aa5-8a6a-0682fd109a28",
+                  "value": "157e7308-42e5-4168-8711-0c988b8de50e",
                   "isOptional": true
                 },
                 {
@@ -325,7 +289,7 @@
                 },
                 {
                   "name": "Query",
-                  "value": "pageViews\n| summarize Count = count() by client_CountryOrRegion\n| order by Count desc\n| top 10 by Count desc\n| render barchart \n",
+                  "value": "pageViews\n| project\n   Device = case(\n        client_OS has \"iOS\", \"Mobile\",\n        client_OS has \"Android\", \"Mobile\",\n        client_OS has \"Mac\", \"Desktop\",\n        client_OS has \"Windows\", \"Desktop\",\n        client_OS has \"Linux\", \"Desktop\",\n        client_OS has \"Chrome OS\", \"Desktop\",\n        client_OS has \"Firefox OS\", \"Desktop\",\n        \"Other\")\n| summarize Count = count() by Device\n| order by Count desc\n| render piechart   \n",
                   "isOptional": true
                 },
                 {
@@ -335,7 +299,7 @@
                 },
                 {
                   "name": "SpecificChart",
-                  "value": "StackedBar",
+                  "value": "Pie",
                   "isOptional": true
                 },
                 {
@@ -345,14 +309,14 @@
                 },
                 {
                   "name": "PartSubTitle",
-                  "value": "microgamingcorporate",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
                   "isOptional": true
                 },
                 {
                   "name": "Dimensions",
                   "value": {
                     "xAxis": {
-                      "name": "client_CountryOrRegion",
+                      "name": "Device",
                       "type": "string"
                     },
                     "yAxis": [
@@ -383,15 +347,15 @@
               "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
               "settings": {},
               "partHeader": {
-                "title": "Countries",
-                "subtitle": "Top 10 Countries"
+                "title": "Mobile vs Desktop",
+                "subtitle": ""
               }
             }
           },
-          "5": {
+          "4": {
             "position": {
-              "x": 0,
-              "y": 1,
+              "x": 6,
+              "y": 5,
               "colSpan": 6,
               "rowSpan": 5
             },
@@ -409,7 +373,7 @@
                   "name": "Scope",
                   "value": {
                     "resourceIds": [
-                      "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                     ]
                   },
                   "isOptional": true
@@ -459,7 +423,7 @@
                 },
                 {
                   "name": "PartSubTitle",
-                  "value": "microgamingcorporate",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
                   "isOptional": true
                 },
                 {
@@ -502,11 +466,252 @@
               }
             }
           },
+          "5": {
+            "position": {
+              "x": 12,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "1483396f-142e-4638-95d9-6b766ec110a7",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| project\n    Browser = case(\n        client_Browser has \"Firefox\", \"Firefox\",\n        client_Browser has \"Safari\", \"Safari\",\n        client_Browser has \"Chrome\", \"Chrome\",\n        client_Browser has \"Samsung\", \"Samsung\",\n        client_Browser has \"Edg\", \"Edge\",\n        client_Browser has \"Opera\", \"Opera\",\n        client_Browser has \"Internet Explorer\", \"Internet Explorer\",\n        client_Browser has \"Silk\", \"Amazon Silk\",\n        client_Browser has \"Facebook\", \"Facebook\",\n        client_Browser has \"Instagram\", \"Instagram\",\n        client_Browser has \"Apple Mail\", \"Apple Mail\",\n        client_Browser has \"Android WebKit\", \"Android WebKit\",\n        \"Other\"),\n   OS = case(\n        client_OS has \"iOS\", \"iOS\",\n        client_OS has \"Android\", \"Android\",\n        client_OS has \"Mac\", \"Mac\",\n        client_OS has \"Windows\", \"Windows\",\n        client_OS has \"Linux\", \"Linux\",\n        client_OS has \"Chrome OS\", \"Chrome OS\",\n        client_OS has \"Firefox OS\", \"Firefox OS\",\n        \"Other\")\n| summarize Count = count() by OS, Browser\n| order by Count desc\n| top 10 by Count desc\n| render piechart \n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "FrameControlChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Pie",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "OS",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "pageViews\n| project\n    Browser = case(\n        client_Browser has \"Firefox\", \"Firefox\",\n        client_Browser has \"Safari\", \"Safari\",\n        client_Browser has \"Chrome\", \"Chrome\",\n        client_Browser has \"Samsung\", \"Samsung\",\n        client_Browser has \"Edg\", \"Edge\",\n        client_Browser has \"Opera\", \"Opera\",\n        client_Browser has \"Internet Explorer\", \"Internet Explorer\",\n        client_Browser has \"Silk\", \"Amazon Silk\",\n        client_Browser has \"Facebook\", \"Facebook\",\n        client_Browser has \"Instagram\", \"Instagram\",\n        client_Browser has \"Apple Mail\", \"Apple Mail\",\n        client_Browser has \"Android WebKit\", \"Android WebKit\",\n        \"Other\"),\n   OS = case(\n        client_OS has \"iOS\", \"iOS\",\n        client_OS has \"Android\", \"Android\",\n        client_OS has \"Mac\", \"Mac\",\n        client_OS has \"Windows\", \"Windows\",\n        client_OS has \"Linux\", \"Linux\",\n        client_OS has \"Chrome OS\", \"Chrome OS\",\n        client_OS has \"Firefox OS\", \"Firefox OS\",\n        \"Other\")\n| summarize Count = count() by OS, Browser\n| order by Count desc\n| render piechart \n\n"
+                }
+              },
+              "partHeader": {
+                "title": "Operating Systems",
+                "subtitle": ""
+              }
+            }
+          },
           "6": {
             "position": {
-              "x": 6,
-              "y": 3,
-              "colSpan": 7,
+              "x": 0,
+              "y": 12,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "content": "# Pages",
+                  "title": "",
+                  "subtitle": "",
+                  "markdownSource": 1,
+                  "markdownUri": ""
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 4,
+              "y": 12,
+              "colSpan": 5,
+              "rowSpan": 6
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "120fce94-8af2-4ad5-9146-b5533a109407",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "PT12H",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| summarize Count = count() by name\n| order by Count desc\n| top 10 by Count desc\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "name": "319px",
+                    "Count": "77px"
+                  }
+                }
+              },
+              "partHeader": {
+                "title": "Popular Pages",
+                "subtitle": "in the selected period"
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 9,
+              "y": 12,
+              "colSpan": 8,
               "rowSpan": 3
             },
             "metadata": {
@@ -528,7 +733,7 @@
                       "metrics": [
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                           },
                           "name": "pageViews/count",
                           "aggregationType": 1,
@@ -566,75 +771,12 @@
               }
             }
           },
-          "7": {
-            "position": {
-              "x": 0,
-              "y": 7,
-              "colSpan": 3,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [],
-              "type": "Extension/HubsExtension/PartType/MarkdownPart",
-              "settings": {
-                "content": {
-                  "content": "# Performance",
-                  "title": "",
-                  "subtitle": "",
-                  "markdownSource": 1,
-                  "markdownUri": ""
-                }
-              }
-            }
-          },
-          "8": {
-            "position": {
-              "x": 3,
-              "y": 7,
-              "colSpan": 2,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "ResourceId",
-                  "value": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                },
-                {
-                  "name": "DataModel",
-                  "value": {
-                    "version": "1.0.0",
-                    "timeContext": {
-                      "durationMs": 86400000,
-                      "createdTime": "2018-05-04T23:43:37.804Z",
-                      "isInitialTime": false,
-                      "grain": 1,
-                      "useDashboardTimeRange": false
-                    }
-                  },
-                  "isOptional": true
-                },
-                {
-                  "name": "ConfigurationId",
-                  "value": "2a8ede4f-2bee-4b9c-aed9-2db0e8a01865",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/AppInsightsExtension/PartType/CuratedBladePerformancePinnedPart",
-              "isAdapter": true,
-              "asset": {
-                "idInputName": "ResourceId",
-                "type": "ApplicationInsights"
-              },
-              "defaultMenuItemId": "performance"
-            }
-          },
           "9": {
             "position": {
               "x": 0,
-              "y": 8,
-              "colSpan": 5,
-              "rowSpan": 3
+              "y": 13,
+              "colSpan": 4,
+              "rowSpan": 5
             },
             "metadata": {
               "inputs": [
@@ -650,14 +792,14 @@
                   "name": "Scope",
                   "value": {
                     "resourceIds": [
-                      "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                     ]
                   },
                   "isOptional": true
                 },
                 {
                   "name": "PartId",
-                  "value": "916d2b83-2cef-4c03-85eb-579af1ee9efa",
+                  "value": "1557dc84-1489-4b2e-9341-422050017a4e",
                   "isOptional": true
                 },
                 {
@@ -667,7 +809,7 @@
                 },
                 {
                   "name": "TimeRange",
-                  "value": "P1D",
+                  "value": "PT12H",
                   "isOptional": true
                 },
                 {
@@ -680,16 +822,17 @@
                 },
                 {
                   "name": "Query",
-                  "value": "// Slowest pages \n// What are the 3 slowest pages, and how slow are they? \npageViews\n| where notempty(duration) and client_Type == 'Browser'\n| extend total_duration=duration*itemCount\n| summarize avg_duration=(sum(total_duration)/sum(itemCount))/1000 by operation_Name\n| top 5 by avg_duration desc\n| project URL = operation_Name, avg_duration_sec = avg_duration\n",
+                  "value": "// Page views trend \n// Chart the page views count, during the last day. \n// To create an alert for this query, click '+ New alert rule'\npageViews\n| summarize Count = count() by bin(timestamp,1d)\n| render columnchart \n",
                   "isOptional": true
                 },
                 {
                   "name": "ControlType",
-                  "value": "AnalyticsGrid",
+                  "value": "FrameControlChart",
                   "isOptional": true
                 },
                 {
                   "name": "SpecificChart",
+                  "value": "StackedColumn",
                   "isOptional": true
                 },
                 {
@@ -699,15 +842,33 @@
                 },
                 {
                   "name": "PartSubTitle",
-                  "value": "microgamingcorporate",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
                   "isOptional": true
                 },
                 {
                   "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  },
                   "isOptional": true
                 },
                 {
                   "name": "LegendOptions",
+                  "value": {
+                    "isEnabled": true,
+                    "position": "Bottom"
+                  },
                   "isOptional": true
                 },
                 {
@@ -719,1181 +880,17 @@
               "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
               "settings": {},
               "partHeader": {
-                "title": "Speed",
-                "subtitle": "Top 5 slowest pages"
+                "title": "Page View Totals",
+                "subtitle": "by day in the selected time frame"
               }
             }
           },
           "10": {
             "position": {
-              "x": 5,
-              "y": 8,
-              "colSpan": 7,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/networkDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Page load network connect time",
-                            "color": "#7E58FF"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/processingDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Client processing time",
-                            "color": "#44F1C8"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/sendDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Send request time",
-                            "color": "#EB9371"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/receiveDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Receiving response time",
-                            "color": "#0672F1"
-                          }
-                        }
-                      ],
-                      "title": "Average page load time breakdown",
-                      "visualization": {
-                        "chartType": 3,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/networkDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Page load network connect time",
-                            "color": "#7E58FF"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/processingDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Client processing time",
-                            "color": "#44F1C8"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/sendDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Send request time",
-                            "color": "#EB9371"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "browserTimings/receiveDuration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Receiving response time",
-                            "color": "#0672F1"
-                          }
-                        }
-                      ],
-                      "title": "Average page load time breakdown",
-                      "visualization": {
-                        "chartType": 3,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "11": {
-            "position": {
-              "x": 0,
-              "y": 12,
-              "colSpan": 3,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [],
-              "type": "Extension/HubsExtension/PartType/MarkdownPart",
-              "settings": {
-                "content": {
-                  "content": "# Errors",
-                  "title": "",
-                  "subtitle": "",
-                  "markdownSource": 1,
-                  "markdownUri": ""
-                }
-              }
-            }
-          },
-          "12": {
-            "position": {
-              "x": 3,
-              "y": 12,
-              "colSpan": 1,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "ResourceId",
-                  "value": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                },
-                {
-                  "name": "DataModel",
-                  "value": {
-                    "version": "1.0.0",
-                    "timeContext": {
-                      "durationMs": 86400000,
-                      "createdTime": "2018-05-04T23:42:40.072Z",
-                      "isInitialTime": false,
-                      "grain": 1,
-                      "useDashboardTimeRange": false
-                    }
-                  },
-                  "isOptional": true
-                },
-                {
-                  "name": "ConfigurationId",
-                  "value": "8a02f7bf-ac0f-40e1-afe9-f0e72cfee77f",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/AppInsightsExtension/PartType/CuratedBladeFailuresPinnedPart",
-              "isAdapter": true,
-              "asset": {
-                "idInputName": "ResourceId",
-                "type": "ApplicationInsights"
-              },
-              "defaultMenuItemId": "failures"
-            }
-          },
-          "13": {
-            "position": {
-              "x": 0,
-              "y": 13,
-              "colSpan": 5,
-              "rowSpan": 2
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "exceptions/browser",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Browser exceptions",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Browser exceptions",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "exceptions/browser",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Browser exceptions",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Browser exceptions",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "14": {
-            "position": {
-              "x": 5,
-              "y": 13,
-              "colSpan": 4,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "requests/failed",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Failed requests",
-                            "color": "#EC008C"
-                          }
-                        }
-                      ],
-                      "title": "Failed requests",
-                      "visualization": {
-                        "chartType": 3,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      },
-                      "openBladeOnClick": {
-                        "openBlade": true,
-                        "destinationBlade": {
-                          "extensionName": "HubsExtension",
-                          "bladeName": "ResourceMenuBlade",
-                          "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
-                            "menuid": "failures"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "requests/failed",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Failed requests",
-                            "color": "#EC008C"
-                          }
-                        }
-                      ],
-                      "title": "Failed requests",
-                      "visualization": {
-                        "chartType": 3,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      },
-                      "openBladeOnClick": {
-                        "openBlade": true,
-                        "destinationBlade": {
-                          "extensionName": "HubsExtension",
-                          "bladeName": "ResourceMenuBlade",
-                          "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
-                            "menuid": "failures"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "15": {
-            "position": {
-              "x": 10,
-              "y": 13,
-              "colSpan": 8,
-              "rowSpan": 4
-            },
-            "metadata": {
-              "inputs": [],
-              "type": "Extension/HubsExtension/PartType/MarkdownPart",
-              "settings": {
-                "content": {
-                  "content": "* Current live users\n* Most accessed pages\n* How often is the Feedback form being shown\n* Mobile vs Desktop users\n* ✅ Total Page views this period\n* ✅ Total Number of users this period\n* Bounce Rate\n* ✅ Sessions\n* Time on page\n* ✅ Page Views\n  * ✅ Total\n* Top Landing Pages\n* Traffic Sources\n* Exit Pages\n* Device Metrics\n* Search Queries (auto track this)\n* Users (Total)\n  * Current Users (Live)\n* Time\n* Pages per session\n* Events (Top events)\n* Logins\n* Logouts\n* Failed Logins\n* ✅Slowest Pages",
-                  "title": "Notes",
-                  "subtitle": "Some outstanding work that needs to be added",
-                  "markdownSource": 1,
-                  "markdownUri": ""
-                }
-              },
-              "partHeader": {
-                "title": "Tracking Dashboard",
-                "subtitle": "Suggested metrics to track based off a Google Search"
-              }
-            }
-          },
-          "16": {
-            "position": {
-              "x": 0,
+              "x": 9,
               "y": 15,
-              "colSpan": 5,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "exceptions/server",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Server exceptions",
-                            "color": "#47BDF5"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "dependencies/failed",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Dependency failures",
-                            "color": "#7E58FF"
-                          }
-                        }
-                      ],
-                      "title": "Server exceptions and Dependency failures",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "exceptions/server",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Server exceptions",
-                            "color": "#47BDF5"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "dependencies/failed",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Dependency failures",
-                            "color": "#7E58FF"
-                          }
-                        }
-                      ],
-                      "title": "Server exceptions and Dependency failures",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "17": {
-            "position": {
-              "x": 0,
-              "y": 19,
-              "colSpan": 4,
-              "rowSpan": 1
-            },
-            "metadata": {
-              "inputs": [],
-              "type": "Extension/HubsExtension/PartType/MarkdownPart",
-              "settings": {
-                "content": {
-                  "content": "# Server",
-                  "title": "",
-                  "subtitle": "",
-                  "markdownSource": 1,
-                  "markdownUri": ""
-                }
-              }
-            }
-          },
-          "18": {
-            "position": {
-              "x": 0,
-              "y": 20,
               "colSpan": 4,
               "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/memoryAvailableBytes",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Available memory",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Average available memory",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/memoryAvailableBytes",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Available memory",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Average available memory",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "19": {
-            "position": {
-              "x": 4,
-              "y": 20,
-              "colSpan": 4,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processorCpuPercentage",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Processor time",
-                            "color": "#47BDF5"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processCpuPercentage",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Process CPU",
-                            "color": "#7E58FF"
-                          }
-                        }
-                      ],
-                      "title": "Average processor and process CPU utilization",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processorCpuPercentage",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Processor time",
-                            "color": "#47BDF5"
-                          }
-                        },
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processCpuPercentage",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Process CPU",
-                            "color": "#7E58FF"
-                          }
-                        }
-                      ],
-                      "title": "Average processor and process CPU utilization",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "20": {
-            "position": {
-              "x": 8,
-              "y": 20,
-              "colSpan": 4,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processIOBytesPerSecond",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Process IO rate",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Average process I/O rate",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "performanceCounters/processIOBytesPerSecond",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Process IO rate",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Average process I/O rate",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "21": {
-            "position": {
-              "x": 0,
-              "y": 23,
-              "colSpan": 4,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "requests/duration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Server response time",
-                            "color": "#00BCF2"
-                          }
-                        }
-                      ],
-                      "title": "Server response time",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      },
-                      "openBladeOnClick": {
-                        "openBlade": true,
-                        "destinationBlade": {
-                          "extensionName": "HubsExtension",
-                          "bladeName": "ResourceMenuBlade",
-                          "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
-                            "menuid": "performance"
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "requests/duration",
-                          "aggregationType": 4,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Server response time",
-                            "color": "#00BCF2"
-                          }
-                        }
-                      ],
-                      "title": "Server response time",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      },
-                      "openBladeOnClick": {
-                        "openBlade": true,
-                        "destinationBlade": {
-                          "extensionName": "HubsExtension",
-                          "bladeName": "ResourceMenuBlade",
-                          "parameters": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate",
-                            "menuid": "performance"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "22": {
-            "position": {
-              "x": 4,
-              "y": 23,
-              "colSpan": 4,
-              "rowSpan": 3
-            },
-            "metadata": {
-              "inputs": [
-                {
-                  "name": "options",
-                  "value": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "availabilityResults/count",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Availability test results count",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Availability test results count",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "name": "sharedTimeRange",
-                  "isOptional": true
-                }
-              ],
-              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
-              "settings": {
-                "content": {
-                  "options": {
-                    "chart": {
-                      "metrics": [
-                        {
-                          "resourceMetadata": {
-                            "id": "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
-                          },
-                          "name": "availabilityResults/count",
-                          "aggregationType": 7,
-                          "namespace": "microsoft.insights/components",
-                          "metricVisualization": {
-                            "displayName": "Availability test results count",
-                            "color": "#47BDF5"
-                          }
-                        }
-                      ],
-                      "title": "Availability test results count",
-                      "visualization": {
-                        "chartType": 2,
-                        "legendVisualization": {
-                          "isVisible": true,
-                          "position": 2,
-                          "hideSubtitle": false
-                        },
-                        "axisVisualization": {
-                          "x": {
-                            "isVisible": true,
-                            "axisType": 2
-                          },
-                          "y": {
-                            "isVisible": true,
-                            "axisType": 1
-                          }
-                        },
-                        "disablePinning": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "23": {
-            "position": {
-              "x": 0,
-              "y": 26,
-              "colSpan": 6,
-              "rowSpan": 4
             },
             "metadata": {
               "inputs": [
@@ -1909,7 +906,7 @@
                   "name": "Scope",
                   "value": {
                     "resourceIds": [
-                      "/subscriptions/9dfde687-6345-43fd-974e-d74b1bbe8b2d/resourceGroups/wordpress-sites/providers/microsoft.insights/components/microgamingcorporate"
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
                     ]
                   },
                   "isOptional": true
@@ -1958,7 +955,7 @@
                 },
                 {
                   "name": "PartSubTitle",
-                  "value": "microgamingcorporate",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
                   "isOptional": true
                 },
                 {
@@ -1978,14 +975,635 @@
               "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
               "settings": {
                 "content": {
+                  "Query": "customEvents\n| summarize Count = count() by name\n| project Event = name, Count = Count\n| order by Count desc\n\n",
                   "PartSubTitle": "Number of times this event was triggered"
+                }
+              },
+              "partHeader": {
+                "title": "Events",
+                "subtitle": "Top 10 Events in this period"
+              }
+            }
+          },
+          "11": {
+            "position": {
+              "x": 13,
+              "y": 15,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "157e44db-1087-447b-9151-3ec43fcc118a",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where name == \"search\"\n| project Query = customDimensions.s\n| summarize Count = count() by tostring(Query)\n| order by Count desc\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "Query": "customEvents\n| where name == \"search\"\n| project Query = customDimensions.s, ['Num of Results'] = customDimensions.found_posts\n\n"
+                }
+              },
+              "partHeader": {
+                "title": "Search",
+                "subtitle": "Search queries in the given period"
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 20,
+              "colSpan": 3,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "content": "# Performance",
+                  "title": "",
+                  "subtitle": "",
+                  "markdownSource": 1,
+                  "markdownUri": ""
                 }
               }
             }
           },
-          "24": {
+          "13": {
             "position": {
-              "x": 6,
+              "x": 3,
+              "y": 20,
+              "colSpan": 2,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ResourceId",
+                  "value": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                },
+                {
+                  "name": "DataModel",
+                  "value": {
+                    "version": "1.0.0",
+                    "timeContext": {
+                      "durationMs": 86400000,
+                      "createdTime": "2018-05-04T23:43:37.804Z",
+                      "isInitialTime": false,
+                      "grain": 1,
+                      "useDashboardTimeRange": false
+                    }
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "2a8ede4f-2bee-4b9c-aed9-2db0e8a01865",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/CuratedBladePerformancePinnedPart",
+              "isAdapter": true,
+              "asset": {
+                "idInputName": "ResourceId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "performance"
+            }
+          },
+          "14": {
+            "position": {
+              "x": 5,
+              "y": 20,
+              "colSpan": 9,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/networkDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Page load network connect time",
+                            "color": "#7E58FF"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/processingDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Client processing time",
+                            "color": "#44F1C8"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/sendDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Send request time",
+                            "color": "#EB9371"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/receiveDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Receiving response time",
+                            "color": "#0672F1"
+                          }
+                        }
+                      ],
+                      "title": "Average page load time breakdown",
+                      "visualization": {
+                        "chartType": 3,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/networkDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Page load network connect time",
+                            "color": "#7E58FF"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/processingDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Client processing time",
+                            "color": "#44F1C8"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/sendDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Send request time",
+                            "color": "#EB9371"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "browserTimings/receiveDuration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Receiving response time",
+                            "color": "#0672F1"
+                          }
+                        }
+                      ],
+                      "title": "Average page load time breakdown",
+                      "visualization": {
+                        "chartType": 3,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "15": {
+            "position": {
+              "x": 14,
+              "y": 20,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "HealthCheckStatus",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Health check status"
+                          }
+                        }
+                      ],
+                      "title": "Health Check",
+                      "titleKind": 2,
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideHoverCard": false,
+                          "hideLabelNames": true
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "timespan": {
+                        "relative": {
+                          "duration": 86400000
+                        },
+                        "showUTCTime": false,
+                        "grain": 1
+                      }
+                    }
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "HealthCheckStatus",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Health check status"
+                          }
+                        }
+                      ],
+                      "title": "Health Check",
+                      "titleKind": 2,
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideHoverCard": false,
+                          "hideLabelNames": true
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "1440m"
+                  }
+                }
+              }
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 21,
+              "colSpan": 5,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "resourceTypeMode",
+                  "isOptional": true
+                },
+                {
+                  "name": "ComponentId",
+                  "isOptional": true
+                },
+                {
+                  "name": "Scope",
+                  "value": {
+                    "resourceIds": [
+                      "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                    ]
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "PartId",
+                  "value": "916d2b83-2cef-4c03-85eb-579af1ee9efa",
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "2.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "DraftRequestParameters",
+                  "isOptional": true
+                },
+                {
+                  "name": "Query",
+                  "value": "// Slowest pages \n// What are the 3 slowest pages, and how slow are they? \npageViews\n| where notempty(duration) and client_Type == 'Browser'\n| extend total_duration=duration*itemCount\n| summarize avg_duration=(sum(total_duration)/sum(itemCount))/1000 by operation_Name\n| top 5 by avg_duration desc\n| project URL = operation_Name, avg_duration_sec = avg_duration\n",
+                  "isOptional": true
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics",
+                  "isOptional": true
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "YOUR-APP-INSIGHTS-NAME",
+                  "isOptional": true
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "LegendOptions",
+                  "isOptional": true
+                },
+                {
+                  "name": "IsQueryContainTimeRange",
+                  "value": false,
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+              "settings": {
+                "content": {
+                  "GridColumnsWidth": {
+                    "URL": "258px"
+                  },
+                  "Query": "// Slowest pages \n// What are the 3 slowest pages, and how slow are they? \npageViews\n| where notempty(duration) and client_Type == 'Browser'\n| extend total_duration=duration*itemCount\n| summarize avg_duration=(sum(total_duration)/sum(itemCount))/1000 by operation_Name\n| top 5 by avg_duration desc\n| project URL = operation_Name, ['avg Duration (sec)'] = avg_duration\n\n"
+                }
+              },
+              "partHeader": {
+                "title": "Slowest Pages",
+                "subtitle": "Top 5, according to their average duration in seconds"
+              }
+            }
+          },
+          "17": {
+            "position": {
+              "x": 0,
+              "y": 26,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "content": "# Errors",
+                  "title": "",
+                  "subtitle": "",
+                  "markdownSource": 1,
+                  "markdownUri": ""
+                }
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "x": 4,
+              "y": 26,
+              "colSpan": 1,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ResourceId",
+                  "value": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                },
+                {
+                  "name": "DataModel",
+                  "value": {
+                    "version": "1.0.0",
+                    "timeContext": {
+                      "durationMs": 86400000,
+                      "createdTime": "2018-05-04T23:42:40.072Z",
+                      "isInitialTime": false,
+                      "grain": 1,
+                      "useDashboardTimeRange": false
+                    }
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": "8a02f7bf-ac0f-40e1-afe9-f0e72cfee77f",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/CuratedBladeFailuresPinnedPart",
+              "isAdapter": true,
+              "asset": {
+                "idInputName": "ResourceId",
+                "type": "ApplicationInsights"
+              },
+              "defaultMenuItemId": "failures"
+            }
+          },
+          "19": {
+            "position": {
+              "x": 5,
               "y": 26,
               "colSpan": 6,
               "rowSpan": 4
@@ -1993,36 +1611,1133 @@
             "metadata": {
               "inputs": [
                 {
-                  "name": "partTitle",
-                  "isOptional": true
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "exceptions/server",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Server exceptions",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "dependencies/failed",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Dependency failures",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "title": "Server exceptions and Dependency failures",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
                 },
                 {
-                  "name": "query",
-                  "isOptional": true
-                },
-                {
-                  "name": "chartType",
-                  "isOptional": true
-                },
-                {
-                  "name": "isShared",
-                  "isOptional": true
-                },
-                {
-                  "name": "queryId",
-                  "isOptional": true
-                },
-                {
-                  "name": "formatResults",
-                  "isOptional": true
-                },
-                {
-                  "name": "queryScope",
+                  "name": "sharedTimeRange",
                   "isOptional": true
                 }
               ],
-              "type": "Extension/HubsExtension/PartType/ArgQuerySingleValueTile",
-              "settings": {}
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "exceptions/server",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Server exceptions",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "dependencies/failed",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Dependency failures",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "title": "Server exceptions and Dependency failures",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "x": 11,
+              "y": 26,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "exceptions/browser",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Browser exceptions",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Browser exceptions",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "exceptions/browser",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Browser exceptions",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Browser exceptions",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "21": {
+            "position": {
+              "x": 0,
+              "y": 27,
+              "colSpan": 5,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "requests/failed",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Failed requests",
+                            "color": "#EC008C"
+                          }
+                        }
+                      ],
+                      "title": "Failed requests",
+                      "visualization": {
+                        "chartType": 3,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "extensionName": "HubsExtension",
+                          "bladeName": "ResourceMenuBlade",
+                          "parameters": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
+                            "menuid": "failures"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "requests/failed",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Failed requests",
+                            "color": "#EC008C"
+                          }
+                        }
+                      ],
+                      "title": "Failed requests",
+                      "visualization": {
+                        "chartType": 3,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "extensionName": "HubsExtension",
+                          "bladeName": "ResourceMenuBlade",
+                          "parameters": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
+                            "menuid": "failures"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "22": {
+            "position": {
+              "x": 0,
+              "y": 30,
+              "colSpan": 17,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http4xx",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 4xx"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http401",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 401"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http403",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 403"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http404",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 404"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http406",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 406"
+                          }
+                        }
+                      ],
+                      "title": "Errors - HTTP 4xx",
+                      "titleKind": 2,
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideHoverCard": false,
+                          "hideLabelNames": true
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "timespan": {
+                        "relative": {
+                          "duration": 604800000
+                        },
+                        "showUTCTime": false,
+                        "grain": 1
+                      }
+                    }
+                  },
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http4xx",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 4xx"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http401",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 401"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http403",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 403"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http404",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 404"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "Http406",
+                          "aggregationType": 1,
+                          "namespace": "microsoft.web/sites",
+                          "metricVisualization": {
+                            "displayName": "Http 406"
+                          }
+                        }
+                      ],
+                      "title": "Errors - HTTP 4xx",
+                      "titleKind": 2,
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideHoverCard": false,
+                          "hideLabelNames": true
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "absolute": {
+                      "fromDate": "2024-04-14T16:12:56.243Z",
+                      "toDate": "2024-04-14T23:24:39.629Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "23": {
+            "position": {
+              "x": 0,
+              "y": 37,
+              "colSpan": 4,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "content": "# Server",
+                  "title": "",
+                  "subtitle": "",
+                  "markdownSource": 1,
+                  "markdownUri": ""
+                }
+              }
+            }
+          },
+          "24": {
+            "position": {
+              "x": 0,
+              "y": 38,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "requests/duration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Server response time",
+                            "color": "#00BCF2"
+                          }
+                        }
+                      ],
+                      "title": "Server response time",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "extensionName": "HubsExtension",
+                          "bladeName": "ResourceMenuBlade",
+                          "parameters": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
+                            "menuid": "performance"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "requests/duration",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Server response time",
+                            "color": "#00BCF2"
+                          }
+                        }
+                      ],
+                      "title": "Server response time",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      },
+                      "openBladeOnClick": {
+                        "openBlade": true,
+                        "destinationBlade": {
+                          "extensionName": "HubsExtension",
+                          "bladeName": "ResourceMenuBlade",
+                          "parameters": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME",
+                            "menuid": "performance"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "25": {
+            "position": {
+              "x": 4,
+              "y": 38,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processorCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Processor time",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Process CPU",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "title": "Average processor and process CPU utilization",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processorCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Processor time",
+                            "color": "#47BDF5"
+                          }
+                        },
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processCpuPercentage",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Process CPU",
+                            "color": "#7E58FF"
+                          }
+                        }
+                      ],
+                      "title": "Average processor and process CPU utilization",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "26": {
+            "position": {
+              "x": 8,
+              "y": 38,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processIOBytesPerSecond",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Process IO rate",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Average process I/O rate",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/processIOBytesPerSecond",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Process IO rate",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Average process I/O rate",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "27": {
+            "position": {
+              "x": 12,
+              "y": 38,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "availabilityResults/count",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Availability test results count",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Availability test results count",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "availabilityResults/count",
+                          "aggregationType": 7,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Availability test results count",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Availability test results count",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "28": {
+            "position": {
+              "x": 16,
+              "y": 38,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "options",
+                  "value": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/memoryAvailableBytes",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Available memory",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Average available memory",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "sharedTimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/HubsExtension/PartType/MonitorChartPart",
+              "settings": {
+                "content": {
+                  "options": {
+                    "chart": {
+                      "metrics": [
+                        {
+                          "resourceMetadata": {
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/microsoft.insights/components/YOUR-APP-INSIGHTS-NAME"
+                          },
+                          "name": "performanceCounters/memoryAvailableBytes",
+                          "aggregationType": 4,
+                          "namespace": "microsoft.insights/components",
+                          "metricVisualization": {
+                            "displayName": "Available memory",
+                            "color": "#47BDF5"
+                          }
+                        }
+                      ],
+                      "title": "Average available memory",
+                      "visualization": {
+                        "chartType": 2,
+                        "legendVisualization": {
+                          "isVisible": true,
+                          "position": 2,
+                          "hideSubtitle": false
+                        },
+                        "axisVisualization": {
+                          "x": {
+                            "isVisible": true,
+                            "axisType": 2
+                          },
+                          "y": {
+                            "isVisible": true,
+                            "axisType": 1
+                          }
+                        },
+                        "disablePinning": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "29": {
+            "position": {
+              "x": 0,
+              "y": 42,
+              "colSpan": 7,
+              "rowSpan": 8
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "content": "| Metric                                     | Completed | Section     | Graph               |\n|--------------------------------------------|-----------|-------------|---------------------|\n| Search Queries (Top 10)                    | ✅        | Users       | Search             |\n| How often is the Feedback form being shown | ✅        | Users       | Events             |\n| Mobile vs Desktop users                    | ✅        | Users       | Pie Chart          |\n| Page views this period (group by day)      | ✅        | Users       | Column Chart       |\n| Popular Pages this period                  | ✅        | Users       | Popular Pages      |\n| Sessions                                   | ✅        | Users       |                    |\n| Logins                                     | ✅        | Users       | Events             |\n| Failed Logins                              | ✅        | Users       | Events             |\n| Events                                     | ✅        | Users       | ''                 |\n| Slowest Pages                              | ✅        | Performance |                    |\n| Health Check                               | ✅        | Performance | ''                 |\n| Average page load time breakdown           | ✅        | Performance | ''                 |\n| HTTP 4x                                    | ✅        | Errors      | Errors - HTTP 4xx  |\n| Browser Exceptions                         | ✅        | Errors      | ''                 |\n| Server Exceptions and Dependency Failures  | ✅        | Errors      | ''                 |\n| Failed Requests                            | ✅        | Errors      | ''                 |",
+                  "title": "Notes",
+                  "subtitle": "Some outstanding work that needs to be added",
+                  "markdownSource": 1,
+                  "markdownUri": ""
+                }
+              },
+              "partHeader": {
+                "title": "Tracking Dashboard",
+                "subtitle": "Suggested metrics to track based off a Google Search"
+              }
             }
           }
         }
@@ -2056,20 +2771,26 @@
               },
               "filteredPartIds": [
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb28799",
-                "StartboardPart-LogsDashboardPart-7c6d7f98-5121-4c9e-8617-33fecbb287a5",
                 "StartboardPart-LogsDashboardPart-77cba5d7-efb5-4704-ae30-c00ba42300e7",
+                "StartboardPart-LogsDashboardPart-a0590b2d-bf33-4f51-a0f9-89bc97d36317",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb2879b",
-                "StartboardPart-LogsDashboardPart-7c6d7f98-5121-4c9e-8617-33fecbb287b3",
+                "StartboardPart-LogsDashboardPart-9ca86a50-1915-4a6c-9aad-26a687771056",
+                "StartboardPart-LogsDashboardPart-a0590b2d-bf33-4f51-a0f9-89bc97d363f5",
+                "StartboardPart-LogsDashboardPart-a0590b2d-bf33-4f51-a0f9-89bc97d36266",
+                "StartboardPart-LogsDashboardPart-a0590b2d-bf33-4f51-a0f9-89bc97d36031",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287a9",
+                "StartboardPart-LogsDashboardPart-50a55174-32aa-4999-9ef8-e71a53556033",
+                "StartboardPart-LogsDashboardPart-7c6d7f98-5121-4c9e-8617-33fecbb287b3",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b1",
-                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b7",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287ab",
-                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287bd",
+                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b7",
+                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b5",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287a7",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b9",
-                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287b5",
+                "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287bd",
                 "StartboardPart-MonitorChartPart-7c6d7f98-5121-4c9e-8617-33fecbb287ad",
-                "StartboardPart-LogsDashboardPart-9ca86a50-1915-4a6c-9aad-26a687771056"
+                "StartboardPart-MonitorChartPart-9526b3db-6657-4892-a2b4-0801b4fbb3b0",
+                "StartboardPart-MonitorChartPart-9526b3db-6657-4892-a2b4-0801b4fbb5dd"
               ]
             }
           }

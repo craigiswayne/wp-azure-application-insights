@@ -265,8 +265,11 @@ class WP_Azure_Application_Insights
 
     public static function inject_js_snippet(): void
     {
-        $snippet_path = __DIR__ . '/javascript-snippet.html';
+        $snippet_path = plugin_dir_path(__FILE__) . '/javascript-snippet.html';
         if (!file_exists($snippet_path)) {
+            self::track_event('javascript snippet cannot be found', [
+                'path' => $snippet_path
+            ]);
             return;
         }
         $raw_snippet = file_get_contents($snippet_path);

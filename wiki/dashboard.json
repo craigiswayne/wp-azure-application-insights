@@ -2798,11 +2798,11 @@
       }
     }
   },
-  "name": "microgaming.co.uk",
+  "name": "YOUR-DASHBOARD-TITLE",
   "type": "Microsoft.Portal/dashboards",
-  "location": "INSERT LOCATION",
+  "location": "YOUR-LOCATION",
   "tags": {
-    "hidden-title": "microgaming.co.uk"
+    "hidden-title": "YOUR-DASHBOARD-TITLE"
   },
   "apiVersion": "2015-08-01-preview"
 }

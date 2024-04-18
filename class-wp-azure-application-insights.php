@@ -130,10 +130,7 @@ class WP_Azure_Application_Insights
 
         add_action('admin_menu', array(__CLASS__, 'create_menu_item'));
         add_action('admin_init', array(__CLASS__, 'admin_init'));
-
-        add_action('wp_enqueue_scripts', function(){
-            wp_enqueue_script( 'wp-azure-application-insights', plugin_dir_url(__FILE__).'wp-azure-application-insights.js', [], self::file_data()['Version'] );
-        });
+        add_action('wp_head', array(__CLASS__, 'inject_js_snippet'));
     }
 
     public static function file_data(): array {
@@ -272,6 +269,19 @@ class WP_Azure_Application_Insights
         }
     }
 
+    public static function inject_js_snippet(): void
+    {
+        $snippet_path = WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.html';
+        if (!file_exists($snippet_path)) {
+            self::track_exception(new Error('javascript snippet cannot be found'), [
+                'path' => $snippet_path
+            ]);
+            return;
+        }
+        $raw_snippet = file_get_contents($snippet_path);
+        echo $raw_snippet;
+    }
+
     public static function options_page_content(): void
     {
         $plugin_data = get_plugin_data(__FILE__);
@@ -343,26 +353,29 @@ class WP_Azure_Application_Insights
 
     public static function generate_javascript_snippet($new_vals = []): void
     {
-        $connection_string = self::getConnectionString($new_vals);
+        $connection_string = self::get_connection_string($new_vals);
         if (!$connection_string) {
             return;
         }
-        $raw_snippet = file_get_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.js');
+        $snippet_path = WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet-sample.html';
+        $raw_snippet = file_get_contents($snippet_path);
         $replacements = array(
             '/YOUR_CONNECTION_STRING/' => $connection_string,
         );
         $snippet = preg_replace(array_keys($replacements), array_values($replacements), $raw_snippet);
         try {
-
-            file_put_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'wp-azure-application-insights.js', $snippet);
-            add_settings_error(self::$option_group, 'snippet_updated', "Javascript snippet updated", 'success');
+            file_put_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.html', $snippet);
+            add_settings_error(self::$option_group, 'snippet_update', "Javascript snippet updated", 'success');
         } catch (Error $error) {
-            add_settings_error(self::$option_group, 'snippet_update_failed', "Failed to generate javascript snippet");
-            self::track_event('Failed to generate javascript snippet', (array) $error);
+            add_settings_error(self::$option_group, 'snippet_update_failed', 'Failed to generate javascript snippet');
+            self::track_exception($error, [
+                'snippet_path' => $snippet_path,
+                'replacements' => $replacements
+            ]);
         }
     }
 
-    public static function getConnectionString(array $new_vals = []): ?string
+    public static function get_connection_string(array $new_vals = []): ?string
     {
         $options = [];
         foreach (self::$settings as $setting) {
@@ -382,9 +395,8 @@ class WP_Azure_Application_Insights
         return "InstrumentationKey=$instrumentation_key;IngestionEndpoint=$ingestion_endpoint;LiveEndpoint=$live_endpoint;ApplicationId=$application_id";
     }
 
-    public static function track_event(string $event_name, array $args = []): void
-    {
-        $core_tracking_data = [
+    public static function get_core_tracking_data(): array {
+        return [
             'app_env' => $_SERVER['APP_ENV'] ?? 'unknown',
             'remote_ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
             'request_method' => $_SERVER['REQUEST_METHOD'] ?? 'unknown',
@@ -394,9 +406,17 @@ class WP_Azure_Application_Insights
             'document_uri' => $_SERVER['DOCUMENT_URI'] ?? 'unknown',
             'request_args' => $_SERVER['argv'] ?? 'unknown',
         ];
+    }
 
-        $all_args = array_merge($args, $core_tracking_data);
+    public static function track_event(string $event_name, array $args = []): void
+    {
+        $all_args = array_merge($args, self::get_core_tracking_data());
         self::$_telemetry_client->trackEvent($event_name, $all_args);
+    }
+
+    public static function track_exception(Error|Throwable $error, array $args = []): void {
+        $all_args = array_merge($args, self::get_core_tracking_data());
+        self::$_telemetry_client->trackException($error, $all_args);
     }
 }
 

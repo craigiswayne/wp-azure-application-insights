@@ -1389,13 +1389,14 @@
                       "metrics": [
                         {
                           "resourceMetadata": {
-                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-APP-INSIGHTS-NAME"
+                            "id": "/subscriptions/YOUR-SUBSCRIPTION-ID/resourceGroups/YOUR-RESOURCE-GROUP-NAME/providers/Microsoft.Web/sites/YOUR-WEB-APP-NAME"
                           },
                           "name": "HealthCheckStatus",
                           "aggregationType": 4,
                           "namespace": "microsoft.web/sites",
                           "metricVisualization": {
-                            "displayName": "Health check status"
+                            "displayName": "Health check status",
+                            "resourceDisplayName": "YOUR-WEB-APP-NAME"
                           }
                         }
                       ],

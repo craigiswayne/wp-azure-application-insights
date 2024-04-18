@@ -108,6 +108,8 @@ class WP_Azure_Application_Insights
         ]
     ];
 
+    public static array $file_data;
+
     public static string $page_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'page';
 
     public static string $section_id = WP_AZURE_APPLICATION_INSIGHTS_PREFIX . 'section';
@@ -128,7 +130,14 @@ class WP_Azure_Application_Insights
 
         add_action('admin_menu', array(__CLASS__, 'create_menu_item'));
         add_action('admin_init', array(__CLASS__, 'admin_init'));
-        add_action('wp_head', array(__CLASS__, 'inject_js_snippet'));
+
+        add_action('wp_enqueue_scripts', function(){
+            wp_enqueue_script( 'wp-azure-application-insights', plugin_dir_url(__FILE__).'wp-azure-application-insights.js', [], self::file_data()['Version'] );
+        });
+    }
+
+    public static function file_data(): array {
+        return self::$file_data ?? self::$file_data = get_plugin_data(__FILE__);
     }
 
     public static function listen_for_events(): void
@@ -240,8 +249,8 @@ class WP_Azure_Application_Insights
     public static function create_menu_item(): void
     {
         add_plugins_page(
-            get_plugin_data(__FILE__)['Name'],
-            get_plugin_data(__FILE__)['Name'],
+            self::file_data()['Name'],
+            self::file_data()['Name'],
             'manage_options',
             'wp-azure-app-insights',
             array(__CLASS__, 'options_page_content')
@@ -261,19 +270,6 @@ class WP_Azure_Application_Insights
             register_setting(self::$option_group, $setting['id'], array('sanitize_callback' => [__CLASS__, 'sanitize_option_value_callback_' . $setting['id']]));
             add_settings_field($setting['id'], $setting['label'], [__CLASS__, 'field_html_' . $setting['id']], self::$page_id, self::$section_id);
         }
-    }
-
-    public static function inject_js_snippet(): void
-    {
-        $snippet_path = WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.html';
-        if (!file_exists($snippet_path)) {
-            self::track_event('javascript snippet cannot be found', [
-                'path' => $snippet_path
-            ]);
-            return;
-        }
-        $raw_snippet = file_get_contents($snippet_path);
-        echo $raw_snippet;
     }
 
     public static function options_page_content(): void
@@ -351,14 +347,14 @@ class WP_Azure_Application_Insights
         if (!$connection_string) {
             return;
         }
-        $raw_snippet = file_get_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet-sample.html');
+        $raw_snippet = file_get_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.js');
         $replacements = array(
             '/YOUR_CONNECTION_STRING/' => $connection_string,
         );
         $snippet = preg_replace(array_keys($replacements), array_values($replacements), $raw_snippet);
         try {
 
-            file_put_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'javascript-snippet.html', $snippet);
+            file_put_contents(WP_AZURE_APPLICATION_INSIGHTS_PLUGIN_PATH . 'wp-azure-application-insights.js', $snippet);
             add_settings_error(self::$option_group, 'snippet_updated', "Javascript snippet updated", 'success');
         } catch (Error $error) {
             add_settings_error(self::$option_group, 'snippet_update_failed', "Failed to generate javascript snippet");

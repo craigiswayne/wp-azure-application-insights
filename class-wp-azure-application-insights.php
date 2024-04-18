@@ -265,7 +265,7 @@ class WP_Azure_Application_Insights
 
     public static function inject_js_snippet(): void
     {
-        $snippet_path = plugin_dir_path(__FILE__) . '/javascript-snippet.html';
+        $snippet_path = plugin_dir_path(__FILE__) . 'javascript-snippet.html';
         if (!file_exists($snippet_path)) {
             self::track_event('javascript snippet cannot be found', [
                 'path' => $snippet_path
@@ -356,8 +356,14 @@ class WP_Azure_Application_Insights
             '/YOUR_CONNECTION_STRING/' => $connection_string,
         );
         $snippet = preg_replace(array_keys($replacements), array_values($replacements), $raw_snippet);
-        file_put_contents(__DIR__ . '/javascript-snippet.html', $snippet);
-        add_settings_error(self::$option_group, 'snippet_updated', "Javascript snippet updated", 'success');
+        try {
+
+            file_put_contents(__DIR__ . '/javascript-snippet.html', $snippet);
+            add_settings_error(self::$option_group, 'snippet_updated', "Javascript snippet updated", 'success');
+        } catch (Error $error) {
+            add_settings_error(self::$option_group, 'snippet_update_failed', "Failed to generate javascript snippet");
+            self::track_event('Failed to generate javascript snippet', (array) $error);
+        }
     }
 
     public static function getConnectionString(array $new_vals = []): ?string

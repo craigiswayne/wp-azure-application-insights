@@ -228,6 +228,13 @@ class WP_Azure_Application_Insights
 
     public static function on_shutdown(): void
     {
+        if(is_user_logged_in()){
+            self::$_telemetry_client
+                ->getContext()
+                ->getUserContext()
+                ->setId(get_current_user_id());
+        }
+
         self::$_telemetry_client->flush();
     }
 

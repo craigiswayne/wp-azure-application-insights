@@ -120,16 +120,23 @@ class WP_Azure_Application_Insights
 
     public static function init(): void
     {
+        add_action('admin_menu', array(__CLASS__, 'create_menu_item'));
+        add_action('admin_init', array(__CLASS__, 'admin_init'));
+
+        $instrumentation_key = get_option('wpaai_instrumentation_key');
+
+        if($instrumentation_key === false){
+            return;
+        }
+
         self::$_telemetry_client = self::$_telemetry_client ?? new Telemetry_Client();
         $context = self::$_telemetry_client->getContext();
-        $instrumentation_key = get_option('wpaai_instrumentation_key');
         $context->setInstrumentationKey($instrumentation_key);
         $context->getLocationContext()->setIp($_SERVER['REMOTE_ADDR']);
 
         self::listen_for_events();
 
-        add_action('admin_menu', array(__CLASS__, 'create_menu_item'));
-        add_action('admin_init', array(__CLASS__, 'admin_init'));
+
         add_action('wp_head', array(__CLASS__, 'inject_js_snippet'));
     }
 

@@ -16,8 +16,23 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "craigiswayne/application-insights-sdk",
+                "version": "dev-feature/cve-shit",
+                "type": "library",
+                "source": {
+                    "url": "https://github.com/craigiswayne/application-insights-sdk-php",
+                    "type": "git",
+                    "reference": "origin/feature/cve-shit"
+                }
+            }
+        }
+    ],
     "require": {
-        "microsoft/application-insights": "^0.4.5"
+        "craigiswayne/application-insights-sdk": "dev-feature/cve-shit"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.9",

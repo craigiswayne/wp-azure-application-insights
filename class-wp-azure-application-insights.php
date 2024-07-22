@@ -94,7 +94,7 @@ class WP_Azure_Application_Insights
         [
             'hook_name' => 'after_switch_theme',
             'callback' => 'on_theme_switch',
-            'num_of_args' => 1
+            'num_of_args' => 2
         ],
         [
             'hook_name' => 'shutdown',
@@ -225,11 +225,10 @@ class WP_Azure_Application_Insights
         ]);
     }
 
-    public static function on_theme_switch($stylesheet, $old_theme): void
+    public static function on_theme_switch($old_theme_name, $old_theme_object): void
     {
         self::track_event('theme_switched', [
-            'stylesheet' => $stylesheet,
-            'old_theme' => $old_theme
+            'old_theme_name' => $old_theme_name
         ]);
     }
 

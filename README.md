@@ -88,3 +88,8 @@
 Javascript snippet taken from:
 
 https://github.com/microsoft/ApplicationInsights-JS
+
+---
+
+### TODO:
+*  [ ] Prevent sending data to source if there is no internet
